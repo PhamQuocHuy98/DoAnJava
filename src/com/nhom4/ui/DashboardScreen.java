@@ -24,6 +24,12 @@ public class DashboardScreen extends javax.swing.JFrame {
     
     private final JPanelHomeTest test = new JPanelHomeTest();
     
+    private void defaultTabClick(){
+        btnHome.setBackground(new java.awt.Color(252, 95, 87));
+        btnHome.setForeground(Color.white);
+        
+    }
+    
     public DashboardScreen() {
         initComponents();
        
@@ -34,18 +40,21 @@ public class DashboardScreen extends javax.swing.JFrame {
         
         JpanelMain.add(test,"card4");
         
-        JPanelHome.setBackground(Color.red);
-        
-         JPanelHome.setVisible(false);
-         
+       
+        JPanelHome.setVisible(true);
+       
          
          JPanelProduct.setVisible(false);
          
-         test.setVisible(true);
+         
+        // lblHomeTitle.setAlignmentX(JpanelMain.CENTER_ALIGNMENT);
+        // test.setVisible(true);
        // Jpanel
        // JpanelMain.add(home,"card2");
         
        // JpanelMain.setVisible(true);
+       
+       defaultTabClick();
        
     }
 
@@ -59,60 +68,77 @@ public class DashboardScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
+        btnQuanLyKhuyenMai = new javax.swing.JButton();
+        btnProduct = new javax.swing.JButton();
+        btnStaff1 = new javax.swing.JButton();
+        btnMember1 = new javax.swing.JButton();
         JpanelMain = new javax.swing.JPanel();
-        JPanelHome = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         JPanelProduct = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        JPanelHome = new javax.swing.JPanel();
+        lblHomeTitle = new javax.swing.JLabel();
+        btnNumberProduct = new javax.swing.JButton();
+        btnNumberProduct1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(229, 227, 229));
 
-        jButton1.setLabel("Trang Chủ");
+        btnHome.setBackground(new java.awt.Color(255, 204, 102));
+        btnHome.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnHome.setBorderPainted(false);
+        btnHome.setFocusPainted(false);
+        btnHome.setLabel("Trang Chủ");
+        btnHome.setOpaque(true);
+
+        btnQuanLyKhuyenMai.setText("Quản Lý Bán Hàng");
+
+        btnProduct.setText("Quản Lý Sản Phẩm");
+
+        btnStaff1.setText("Quản Lý Nhân Viên");
+
+        btnMember1.setText("Quản Lý Bán Hàng");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                    .addComponent(btnQuanLyKhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                    .addComponent(btnStaff1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                    .addComponent(btnMember1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addComponent(btnProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94)
+                .addComponent(btnStaff1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnQuanLyKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(93, 93, 93)
+                    .addComponent(btnProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(433, Short.MAX_VALUE)))
         );
 
-        jButton1.getAccessibleContext().setAccessibleName("btnTrangChu");
+        btnHome.getAccessibleContext().setAccessibleName("btnTrangChu");
 
-        JpanelMain.setBackground(new java.awt.Color(102, 255, 255));
+        JpanelMain.setBackground(new java.awt.Color(255, 255, 255));
         JpanelMain.setLayout(new java.awt.CardLayout());
-
-        jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout JPanelHomeLayout = new javax.swing.GroupLayout(JPanelHome);
-        JPanelHome.setLayout(JPanelHomeLayout);
-        JPanelHomeLayout.setHorizontalGroup(
-            JPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPanelHomeLayout.createSequentialGroup()
-                .addGap(313, 313, 313)
-                .addComponent(jLabel1)
-                .addContainerGap(504, Short.MAX_VALUE))
-        );
-        JPanelHomeLayout.setVerticalGroup(
-            JPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPanelHomeLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(jLabel1)
-                .addContainerGap(430, Short.MAX_VALUE))
-        );
-
-        JpanelMain.add(JPanelHome, "card2");
 
         jLabel2.setText("PRoduct");
 
@@ -123,7 +149,7 @@ public class DashboardScreen extends javax.swing.JFrame {
             .addGroup(JPanelProductLayout.createSequentialGroup()
                 .addGap(353, 353, 353)
                 .addComponent(jLabel2)
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
         JPanelProductLayout.setVerticalGroup(
             JPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,6 +160,61 @@ public class DashboardScreen extends javax.swing.JFrame {
         );
 
         JpanelMain.add(JPanelProduct, "card3");
+
+        JPanelHome.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblHomeTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        lblHomeTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHomeTitle.setText("THỐNG KÊ HOẠT ĐỘNG TRONG NGÀY");
+        lblHomeTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        btnNumberProduct.setBackground(new java.awt.Color(252, 95, 87));
+        btnNumberProduct.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnNumberProduct.setForeground(new java.awt.Color(255, 255, 255));
+        btnNumberProduct.setText("300 Sản Phẩm");
+        btnNumberProduct.setBorderPainted(false);
+        btnNumberProduct.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNumberProduct.setMaximumSize(new java.awt.Dimension(200, 100));
+        btnNumberProduct.setOpaque(true);
+
+        btnNumberProduct1.setBackground(new java.awt.Color(62, 98, 215));
+        btnNumberProduct1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnNumberProduct1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNumberProduct1.setText("10.000.000 VNĐ");
+        btnNumberProduct1.setBorderPainted(false);
+        btnNumberProduct1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNumberProduct1.setMaximumSize(new java.awt.Dimension(200, 100));
+        btnNumberProduct1.setOpaque(true);
+
+        javax.swing.GroupLayout JPanelHomeLayout = new javax.swing.GroupLayout(JPanelHome);
+        JPanelHome.setLayout(JPanelHomeLayout);
+        JPanelHomeLayout.setHorizontalGroup(
+            JPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelHomeLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addGroup(JPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPanelHomeLayout.createSequentialGroup()
+                        .addComponent(btnNumberProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(94, 94, 94)
+                        .addComponent(btnNumberProduct1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(91, 91, 91))
+                    .addGroup(JPanelHomeLayout.createSequentialGroup()
+                        .addComponent(lblHomeTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(225, 225, 225))))
+        );
+        JPanelHomeLayout.setVerticalGroup(
+            JPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelHomeLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblHomeTitle)
+                .addGap(38, 38, 38)
+                .addGroup(JPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNumberProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNumberProduct1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(399, Short.MAX_VALUE))
+        );
+
+        JpanelMain.add(JPanelHome, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,9 +249,15 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JPanel JPanelHome;
     private javax.swing.JPanel JPanelProduct;
     private javax.swing.JPanel JpanelMain;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnMember1;
+    private javax.swing.JButton btnNumberProduct;
+    private javax.swing.JButton btnNumberProduct1;
+    private javax.swing.JButton btnProduct;
+    private javax.swing.JButton btnQuanLyKhuyenMai;
+    private javax.swing.JButton btnStaff1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lblHomeTitle;
     // End of variables declaration//GEN-END:variables
 }
