@@ -5,7 +5,12 @@
  */
 package com.nhom4.ui;
 
-import javax.swing.JFrame;
+
+import com.nhom4.component.JPanelHomeTest;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 
 /**
  *
@@ -16,12 +21,32 @@ public class DashboardScreen extends javax.swing.JFrame {
     /**
      * Creates new form DashboardScreen
      */
+    
+    private final JPanelHomeTest test = new JPanelHomeTest();
+    
     public DashboardScreen() {
         initComponents();
-        
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
        
-        setVisible(true);
+       Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+       this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+       
+        
+        
+        JpanelMain.add(test,"card4");
+        
+        JPanelHome.setBackground(Color.red);
+        
+         JPanelHome.setVisible(false);
+         
+         
+         JPanelProduct.setVisible(false);
+         
+         test.setVisible(true);
+       // Jpanel
+       // JpanelMain.add(home,"card2");
+        
+       // JpanelMain.setVisible(true);
+       
     }
 
     /**
@@ -33,27 +58,102 @@ public class DashboardScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        JpanelMain = new javax.swing.JPanel();
+        JPanelHome = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        JPanelProduct = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setLabel("Trang Chủ");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton1.getAccessibleContext().setAccessibleName("btnTrangChu");
+
+        JpanelMain.setBackground(new java.awt.Color(102, 255, 255));
+        JpanelMain.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setText("jLabel1");
+
+        javax.swing.GroupLayout JPanelHomeLayout = new javax.swing.GroupLayout(JPanelHome);
+        JPanelHome.setLayout(JPanelHomeLayout);
+        JPanelHomeLayout.setHorizontalGroup(
+            JPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelHomeLayout.createSequentialGroup()
+                .addGap(313, 313, 313)
+                .addComponent(jLabel1)
+                .addContainerGap(504, Short.MAX_VALUE))
+        );
+        JPanelHomeLayout.setVerticalGroup(
+            JPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelHomeLayout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(jLabel1)
+                .addContainerGap(430, Short.MAX_VALUE))
+        );
+
+        JpanelMain.add(JPanelHome, "card2");
+
+        jLabel2.setText("PRoduct");
+
+        javax.swing.GroupLayout JPanelProductLayout = new javax.swing.GroupLayout(JPanelProduct);
+        JPanelProduct.setLayout(JPanelProductLayout);
+        JPanelProductLayout.setHorizontalGroup(
+            JPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelProductLayout.createSequentialGroup()
+                .addGap(353, 353, 353)
+                .addComponent(jLabel2)
+                .addContainerGap(458, Short.MAX_VALUE))
+        );
+        JPanelProductLayout.setVerticalGroup(
+            JPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelProductLayout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(jLabel2)
+                .addContainerGap(358, Short.MAX_VALUE))
+        );
+
+        JpanelMain.add(JPanelProduct, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(272, 272, 272)
-                .addComponent(jButton1)
-                .addContainerGap(341, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JpanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(jButton1)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JpanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -65,6 +165,12 @@ public class DashboardScreen extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPanelHome;
+    private javax.swing.JPanel JPanelProduct;
+    private javax.swing.JPanel JpanelMain;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
