@@ -80,20 +80,15 @@ public class JpanelProduct extends javax.swing.JPanel {
 
         themBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         themBtn.setForeground(new java.awt.Color(153, 255, 0));
-        themBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\COMPUTER\\Desktop\\icon\\icon\\Add.png")); // NOI18N
         themBtn.setText("Thêm SP");
 
         xoaBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         xoaBtn.setForeground(new java.awt.Color(255, 51, 51));
-        xoaBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\COMPUTER\\Desktop\\icon\\icon\\Delete.png")); // NOI18N
         xoaBtn.setText("Xóa SP");
 
         updateBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(153, 255, 0));
-        updateBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\COMPUTER\\Desktop\\icon\\icon\\Refresh.png")); // NOI18N
         updateBtn.setText("Cập Nhật");
-
-        jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\COMPUTER\\Desktop\\caphe.jpg")); // NOI18N
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -111,7 +106,6 @@ public class JpanelProduct extends javax.swing.JPanel {
 
         jTextField4.setToolTipText("");
 
-        timKiemBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\COMPUTER\\Desktop\\Search.png")); // NOI18N
         timKiemBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 timKiemBtnActionPerformed(evt);
@@ -176,10 +170,10 @@ public class JpanelProduct extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(maSpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(timKiemBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(timKiemBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(maSpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel18)))
@@ -232,71 +226,23 @@ public class JpanelProduct extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton capnhatSPbtn;
-    private javax.swing.JButton capnhatSPbtn1;
-    private javax.swing.JButton capnhatSPbtn2;
-    private javax.swing.JButton capnhatSPbtn3;
-    private javax.swing.JTextField idSptxt;
-    private javax.swing.JTextField idSptxt1;
-    private javax.swing.JTextField idSptxt2;
-    private javax.swing.JTextField idSptxt3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField loaiSpTxt;
     private javax.swing.JTextField maSpTxt;
-    private javax.swing.JComboBox<String> sizeCbb;
-    private javax.swing.JComboBox<String> sizeCbb1;
-    private javax.swing.JComboBox<String> sizeCbb2;
-    private javax.swing.JComboBox<String> sizeCbb3;
     private javax.swing.JComboBox<String> sizeSPcbb;
     private javax.swing.JTextField tenSpTxt;
-    private javax.swing.JTextField tenSptxt;
-    private javax.swing.JTextField tenSptxt1;
-    private javax.swing.JTextField tenSptxt2;
-    private javax.swing.JTextField tenSptxt3;
     private javax.swing.JButton themBtn;
-    private javax.swing.JButton themSPbtn;
-    private javax.swing.JButton themSPbtn1;
-    private javax.swing.JButton themSPbtn2;
-    private javax.swing.JButton themSPbtn3;
-    private javax.swing.JButton thongkeSPbtn;
-    private javax.swing.JButton thongkeSPbtn1;
-    private javax.swing.JButton thongkeSPbtn2;
-    private javax.swing.JButton thongkeSPbtn3;
     private javax.swing.JButton timKiemBtn;
     private javax.swing.JButton updateBtn;
     private javax.swing.JButton xoaBtn;
-    private javax.swing.JButton xoaSPbtn;
-    private javax.swing.JButton xoaSPbtn1;
-    private javax.swing.JButton xoaSPbtn2;
-    private javax.swing.JButton xoaSPbtn3;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.database.Connect;
+import com.sun.jdi.connect.spi.Connection;
 import javax.swing.JFrame;
 
 /**
@@ -14,6 +16,15 @@ import javax.swing.JFrame;
 public class MainScreen {
     
     public static void main (String [] args){
+        
+        
+        java.sql.Connection a = Connect.connectSQL();
+       
+        if(a != null){
+            System.out.print("Thành công");
+        }else{
+            System.out.print("Thất bại");
+        }
         new DashboardScreen().setVisible(true);
     }
 }

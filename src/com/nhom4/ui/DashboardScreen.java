@@ -7,12 +7,16 @@ package com.nhom4.ui;
 
 
 import com.nhom4.component.JPanelHomeTest;
+import com.nhom4.component.JpanelProduct;
+import com.nhom4.component.JpanelStaff;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import javax.swing.JButton;
 import javax.swing.Timer;
 
 
@@ -26,46 +30,73 @@ public class DashboardScreen extends javax.swing.JFrame {
      * Creates new form DashboardScreen
      */
     
-    private final JPanelHomeTest test = new JPanelHomeTest();
+    //private final JPanelHomeTest test = new JPanelHomeTest();
     private Timer t;
-    private void defaultTabClick(){
-        btnHome.setBackground(new java.awt.Color(252, 95, 87));
-        btnHome.setForeground(Color.white);
+    
+    
+    private final JpanelProduct product = new JpanelProduct();
+    
+    private JpanelStaff staff = new JpanelStaff();
+    private void onChangeTabClick(int index){
+        
+        if(index==0){
+           resetButton(btnHome,true);
+           resetButton(btnProduct,false);
+        }else if(index==1){
+            
+           /* btnHome.setBackground(Color.white);
+            btnHome.setForeground(Color.black);
+            
+            btnHome.setOpaque(false);
+           // btnHome.set
+            btnProduct.setBackground(new java.awt.Color(252, 95, 87));
+            btnProduct.setForeground(Color.white);*/
+           resetButton(btnHome,false);
+           resetButton(btnProduct,true);
+        }
+       
         
     }
+    
+    
+    void resetButton(JButton t,boolean statusActive){
+        
+        if(statusActive==false){
+            t.setBackground(new java.awt.Color(238,238,238));
+            t.setOpaque(false);
+            t.setBorderPainted(true);
+            
+            t.setForeground(new java.awt.Color(0,0,0));
+        }else{
+            t.setBackground(new java.awt.Color(252,95,87));
+            t.setOpaque(true);
+            t.setBorderPainted(false);
+            
+            t.setForeground(Color.white);
+        } 
+    }
+    
     
     public DashboardScreen() {
         initComponents();
                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
        
-        
-        
-        JpanelMain.add(test,"card4");
-        
-        startTimer();
-
-        JPanelHome.setVisible(true);
        
-         
-        JPanelProduct.setVisible(false);
-         
-         
-        // lblHomeTitle.setAlignmentX(JpanelMain.CENTER_ALIGNMENT);
-        // test.setVisible(true);
-       // Jpanel
-       // JpanelMain.add(home,"card2");
-        
-       // JpanelMain.setVisible(true);
-       
-       defaultTabClick();
-       
-       
-      
-       
+       setUpJanelMain();
+       onChangeTabClick(0);
+    
     }
     
-    
+    private void setUpJanelMain(){
+        JpanelMain.add(product);
+       // JpanelMain.add(staff);
+        
+        JPanelHome.setVisible(true);
+        startTimer();
+        product.setVisible(false);
+      //  staff.setVisible(false);
+    }
     private void startTimer(){
          t  = new Timer(1000, (ActionEvent e) -> {
              SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -96,8 +127,6 @@ public class DashboardScreen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         JpanelMain = new javax.swing.JPanel();
-        JPanelProduct = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         JPanelHome = new javax.swing.JPanel();
         lblHomeTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -118,15 +147,24 @@ public class DashboardScreen extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(229, 227, 229));
 
         btnHome.setBackground(new java.awt.Color(255, 204, 102));
-        btnHome.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnHome.setBorderPainted(false);
         btnHome.setFocusPainted(false);
         btnHome.setLabel("Trang Chủ");
         btnHome.setOpaque(true);
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         btnQuanLyKhuyenMai.setText("Quản Lý Bán Hàng");
 
         btnProduct.setText("Quản Lý Sản Phẩm");
+        btnProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductActionPerformed(evt);
+            }
+        });
 
         btnStaff1.setText("Quản Lý Nhân Viên");
 
@@ -183,27 +221,6 @@ public class DashboardScreen extends javax.swing.JFrame {
 
         JpanelMain.setBackground(new java.awt.Color(255, 255, 255));
         JpanelMain.setLayout(new java.awt.CardLayout());
-
-        jLabel2.setText("PRoduct");
-
-        javax.swing.GroupLayout JPanelProductLayout = new javax.swing.GroupLayout(JPanelProduct);
-        JPanelProduct.setLayout(JPanelProductLayout);
-        JPanelProductLayout.setHorizontalGroup(
-            JPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPanelProductLayout.createSequentialGroup()
-                .addGap(353, 353, 353)
-                .addComponent(jLabel2)
-                .addContainerGap(569, Short.MAX_VALUE))
-        );
-        JPanelProductLayout.setVerticalGroup(
-            JPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPanelProductLayout.createSequentialGroup()
-                .addGap(211, 211, 211)
-                .addComponent(jLabel2)
-                .addContainerGap(476, Short.MAX_VALUE))
-        );
-
-        JpanelMain.add(JPanelProduct, "card3");
 
         JPanelHome.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -436,6 +453,22 @@ public class DashboardScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductActionPerformed
+        // TODO add your handling code here:
+        
+        JPanelHome.setVisible(false);
+        product.setVisible(true);
+        
+        onChangeTabClick(1);
+    }//GEN-LAST:event_btnProductActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        JPanelHome.setVisible(true);
+        product.setVisible(false);
+        
+        onChangeTabClick(0);
+    }//GEN-LAST:event_btnHomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,7 +476,6 @@ public class DashboardScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelHome;
-    private javax.swing.JPanel JPanelProduct;
     private javax.swing.JPanel JpanelMain;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnMember1;
@@ -452,7 +484,6 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnStaff1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
