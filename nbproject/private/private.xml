@@ -3,12 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/phamquochuy/Desktop/DoAnMonHocJava/src/com/nhom4/database/Connect.java</file>
             <file>file:/Users/phamquochuy/Desktop/DoAnMonHocJava/src/com/nhom4/ui/MainScreen.java</file>
             <file>file:/Users/phamquochuy/Desktop/DoAnMonHocJava/src/com/nhom4/component/JpanelMember.java</file>
             <file>file:/Users/phamquochuy/Desktop/DoAnMonHocJava/src/com/nhom4/component/JpanelStaff.java</file>
             <file>file:/Users/phamquochuy/Desktop/DoAnMonHocJava/src/com/nhom4/ui/DashboardScreen.java</file>
             <file>file:/Users/phamquochuy/Desktop/DoAnMonHocJava/src/com/nhom4/component/JPanelHistorySell.java</file>
+=======
+            <file>file:/C:/Users/Windows%2010/Desktop/Do%20an%20JAVA/src/com/nhom4/component/JpanelProduct.java</file>
+            <file>file:/C:/Users/Windows%2010/Desktop/Do%20an%20JAVA/src/com/nhom4/ui/MainScreen.java</file>
+            <file>file:/C:/Users/Windows%2010/Desktop/Do%20an%20JAVA/src/com/nhom4/component/JpanelMember.java</file>
+            <file>file:/C:/Users/Windows%2010/Desktop/Do%20an%20JAVA/src/com/nhom4/component/JPanelHomeTest.java</file>
+            <file>file:/C:/Users/Windows%2010/Desktop/Do%20an%20JAVA/src/com/nhom4/component/JpanelStaff.java</file>
+            <file>file:/C:/Users/Windows%2010/Desktop/Do%20an%20JAVA/src/com/nhom4/component/JPanelHistorySell.java</file>
+            <file>file:/C:/Users/Windows%2010/Desktop/Do%20an%20JAVA/src/com/nhom4/database/Connect.java</file>
+            <file>file:/C:/Users/Windows%2010/Desktop/Do%20an%20JAVA/src/com/nhom4/ui/DashboardScreen.java</file>
+>>>>>>> 024104e27c2d150929b917001e587ed4dfe6a15d
         </group>
     </open-files>
 </project-private>
