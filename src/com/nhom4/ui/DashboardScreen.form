@@ -60,7 +60,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnHome" pref="265" max="32767" attributes="0"/>
                       <Component id="btnBill" alignment="1" pref="265" max="32767" attributes="0"/>
-                      <Component id="btnStaff1" alignment="1" pref="265" max="32767" attributes="0"/>
+                      <Component id="btnStaff" alignment="1" pref="265" max="32767" attributes="0"/>
                       <Component id="btnMember" alignment="1" pref="265" max="32767" attributes="0"/>
                       <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -84,7 +84,7 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="btnHome" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="btnStaff1" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="btnStaff" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnMember" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -139,10 +139,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProductActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnStaff1">
+        <Component class="javax.swing.JButton" name="btnStaff">
           <Properties>
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Nh&#xe2;n Vi&#xea;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStaffActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnMember">
           <Properties>
