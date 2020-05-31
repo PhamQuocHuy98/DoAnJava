@@ -5,6 +5,10 @@
  */
 package com.nhom4.component;
 
+import com.nhom4.model.ProductCategory;
+import com.nhom4.repository.ProductRepository;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author phamquochuy
@@ -14,8 +18,14 @@ public class JpanelProduct extends javax.swing.JPanel {
     /**
      * Creates new form JpanelProduct
      */
+    
+    ProductRepository productCategory;
     public JpanelProduct() {
         initComponents();
+        
+        productCategory  = new ProductRepository();
+        
+        
     }
 
     /**
@@ -51,11 +61,11 @@ public class JpanelProduct extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        maLoaiTxt = new javax.swing.JTextField();
-        tenLoaiTxt = new javax.swing.JTextField();
-        themLoaiBtn = new javax.swing.JButton();
-        xoaLoaiBtn = new javax.swing.JButton();
-        updateLoaiBtn = new javax.swing.JButton();
+        txtMaLoai = new javax.swing.JTextField();
+        txtTenLoai = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listLoai = new javax.swing.JTable();
@@ -246,28 +256,33 @@ public class JpanelProduct extends javax.swing.JPanel {
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel25.setText("Loại Sản Phẩm:");
 
-        maLoaiTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        maLoaiTxt.setText("CF");
-        maLoaiTxt.addActionListener(new java.awt.event.ActionListener() {
+        txtMaLoai.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtMaLoai.setText("CF");
+        txtMaLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maLoaiTxtActionPerformed(evt);
+                txtMaLoaiActionPerformed(evt);
             }
         });
 
-        tenLoaiTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tenLoaiTxt.setText("Cà Phê");
+        txtTenLoai.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtTenLoai.setText("Cà Phê");
 
-        themLoaiBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        themLoaiBtn.setForeground(new java.awt.Color(153, 255, 0));
-        themLoaiBtn.setText("Thêm ");
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnThem.setForeground(new java.awt.Color(153, 255, 0));
+        btnThem.setText("Thêm ");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
-        xoaLoaiBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        xoaLoaiBtn.setForeground(new java.awt.Color(255, 51, 51));
-        xoaLoaiBtn.setText("Xóa ");
+        btnXoa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnXoa.setForeground(new java.awt.Color(255, 51, 51));
+        btnXoa.setText("Xóa ");
 
-        updateLoaiBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        updateLoaiBtn.setForeground(new java.awt.Color(153, 255, 0));
-        updateLoaiBtn.setText("Cập Nhật");
+        btnSua.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSua.setForeground(new java.awt.Color(153, 255, 0));
+        btnSua.setText("Cập Nhật");
 
         listLoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         listLoai.setModel(new javax.swing.table.DefaultTableModel(
@@ -307,11 +322,11 @@ public class JpanelProduct extends javax.swing.JPanel {
                 .addGap(83, 83, 83)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(themLoaiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(xoaLoaiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(updateLoaiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -323,8 +338,8 @@ public class JpanelProduct extends javax.swing.JPanel {
                             .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tenLoaiTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(maLoaiTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtTenLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
@@ -340,17 +355,17 @@ public class JpanelProduct extends javax.swing.JPanel {
                         .addGap(68, 68, 68)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
-                            .addComponent(maLoaiTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
-                            .addComponent(tenLoaiTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTenLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(themLoaiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(xoaLoaiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(updateLoaiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField5)
                                 .addComponent(timKiemBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -392,12 +407,29 @@ public class JpanelProduct extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_timKiemBtn1ActionPerformed
 
-    private void maLoaiTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maLoaiTxtActionPerformed
+    private void txtMaLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaLoaiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_maLoaiTxtActionPerformed
+    }//GEN-LAST:event_txtMaLoaiActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        
+        String ma = txtMaLoai.getText();
+        String ten = txtTenLoai.getText();
+        
+        ProductCategory temp = new ProductCategory(ma,ten);
+       boolean res = productCategory.insertProductCategory(temp);
+       if(res==true){
+           JOptionPane.showMessageDialog(this, "Thêm thành công");
+       }
+        
+    }//GEN-LAST:event_btnThemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -420,18 +452,15 @@ public class JpanelProduct extends javax.swing.JPanel {
     private javax.swing.JTable listLoai;
     private javax.swing.JTable listSp;
     private javax.swing.JTextField loaiSpTxt;
-    private javax.swing.JTextField maLoaiTxt;
     private javax.swing.JTextField maSpTxt;
     private javax.swing.JComboBox<String> sizeSPcbb;
-    private javax.swing.JTextField tenLoaiTxt;
     private javax.swing.JTextField tenSpTxt;
     private javax.swing.JButton themBtn;
-    private javax.swing.JButton themLoaiBtn;
     private javax.swing.JButton timKiemBtn;
     private javax.swing.JButton timKiemBtn1;
+    private javax.swing.JTextField txtMaLoai;
+    private javax.swing.JTextField txtTenLoai;
     private javax.swing.JButton updateBtn;
-    private javax.swing.JButton updateLoaiBtn;
     private javax.swing.JButton xoaBtn;
-    private javax.swing.JButton xoaLoaiBtn;
     // End of variables declaration//GEN-END:variables
 }
