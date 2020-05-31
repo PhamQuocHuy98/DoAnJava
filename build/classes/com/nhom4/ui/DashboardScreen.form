@@ -59,9 +59,9 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnHome" pref="265" max="32767" attributes="0"/>
-                      <Component id="btnQuanLyKhuyenMai" alignment="1" pref="265" max="32767" attributes="0"/>
+                      <Component id="btnBill" alignment="1" pref="265" max="32767" attributes="0"/>
                       <Component id="btnStaff1" alignment="1" pref="265" max="32767" attributes="0"/>
-                      <Component id="btnMember1" alignment="1" pref="265" max="32767" attributes="0"/>
+                      <Component id="btnMember" alignment="1" pref="265" max="32767" attributes="0"/>
                       <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -86,9 +86,9 @@
                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                   <Component id="btnStaff1" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnMember1" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="btnMember" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnQuanLyKhuyenMai" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="btnBill" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="60" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -123,10 +123,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHomeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnQuanLyKhuyenMai">
+        <Component class="javax.swing.JButton" name="btnBill">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; B&#xe1;n H&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Ho&#xe1; &#x110;&#x1a1;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBillActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnProduct">
           <Properties>
@@ -141,10 +144,13 @@
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Nh&#xe2;n Vi&#xea;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnMember1">
+        <Component class="javax.swing.JButton" name="btnMember">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; B&#xe1;n H&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Th&#xe0;nh Vi&#xea;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMemberActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
@@ -294,13 +300,7 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="300"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
-                    <Property name="mixingCutoutShape" type="java.awt.Shape" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="default"/>
-                    </Property>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="300"/>
-                  </AccessibilityProperties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
@@ -317,9 +317,6 @@
                       <Dimension value="[88, 56]"/>
                     </Property>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="S&#x1ea3;n Ph&#x1ea9;m B&#xe1;n &#x110;&#x1b0;&#x1ee3;c"/>
-                  </AccessibilityProperties>
                 </Component>
               </SubComponents>
             </Container>
@@ -375,9 +372,6 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="3M"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
-                    <Property name="mixingCutoutShape" type="java.awt.Shape" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="default"/>
-                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
@@ -444,9 +438,6 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="12:00:01"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
-                    <Property name="mixingCutoutShape" type="java.awt.Shape" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="default"/>
-                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
@@ -516,9 +507,6 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="12"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
-                    <Property name="mixingCutoutShape" type="java.awt.Shape" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="default"/>
-                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
