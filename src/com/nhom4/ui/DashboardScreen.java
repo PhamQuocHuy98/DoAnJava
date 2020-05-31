@@ -7,6 +7,7 @@ package com.nhom4.ui;
 
 
 import com.nhom4.component.JPanelHomeTest;
+import com.nhom4.component.JpanelBill;
 import com.nhom4.component.JpanelMember;
 import com.nhom4.component.JpanelProduct;
 import com.nhom4.component.JpanelStaff;
@@ -37,6 +38,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     
     private final JpanelProduct product = new JpanelProduct();
     private final JpanelMember member = new JpanelMember();
+    private final JpanelBill bill = new JpanelBill();
     
    // private JpanelStaff staff = new JpanelStaff();
     private void onChangeTabClick(int index){
@@ -44,17 +46,28 @@ public class DashboardScreen extends javax.swing.JFrame {
         if(index==0){
            resetButton(btnHome,true);
            resetButton(btnProduct,false);
+           resetButton(btnMember,false);
+           resetButton(btnBill,false);
         }else if(index==1){
-            
-           /* btnHome.setBackground(Color.white);
-            btnHome.setForeground(Color.black);
-            
-            btnHome.setOpaque(false);
-           // btnHome.set
-            btnProduct.setBackground(new java.awt.Color(252, 95, 87));
-            btnProduct.setForeground(Color.white);*/
            resetButton(btnHome,false);
            resetButton(btnProduct,true);
+           resetButton(btnMember,false);
+           resetButton(btnBill,false);
+        }else if(index==2){
+         /* resetButton(btnHome,false);
+           resetButton(btnProduct,false);
+           resetButton(btnMember,false);
+           resetButton(btnBill,false);*/
+        }else if(index==3){
+           resetButton(btnHome,false);
+           resetButton(btnProduct,false);
+           resetButton(btnMember,true);
+           resetButton(btnBill,false);
+        }else if(index==4){
+           resetButton(btnHome,false);
+           resetButton(btnProduct,false);
+           resetButton(btnMember,false);
+           resetButton(btnBill,true);
         }
        
         
@@ -95,10 +108,13 @@ public class DashboardScreen extends javax.swing.JFrame {
        // JpanelMain.add(staff);
         JpanelMain.add(member);
         
+        JpanelMain.add(bill);
+        
         JPanelHome.setVisible(true);
         startTimer();
         product.setVisible(false);
         member.setVisible(false);
+        bill.setVisible(false);
       //  staff.setVisible(false);
     }
     private void startTimer(){
@@ -124,7 +140,7 @@ public class DashboardScreen extends javax.swing.JFrame {
 
         jPanel4 = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
-        btnQuanLyKhuyenMai = new javax.swing.JButton();
+        btnBill = new javax.swing.JButton();
         btnProduct = new javax.swing.JButton();
         btnStaff1 = new javax.swing.JButton();
         btnMember = new javax.swing.JButton();
@@ -161,7 +177,12 @@ public class DashboardScreen extends javax.swing.JFrame {
             }
         });
 
-        btnQuanLyKhuyenMai.setText("Quản Lý Bán Hàng");
+        btnBill.setText("Quản Lý Hoá Đơn");
+        btnBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBillActionPerformed(evt);
+            }
+        });
 
         btnProduct.setText("Quản Lý Sản Phẩm");
         btnProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +211,7 @@ public class DashboardScreen extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                    .addComponent(btnQuanLyKhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                    .addComponent(btnBill, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                     .addComponent(btnStaff1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                     .addComponent(btnMember, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -213,7 +234,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnMember, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnQuanLyKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBill, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -471,6 +492,8 @@ public class DashboardScreen extends javax.swing.JFrame {
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         JPanelHome.setVisible(true);
         product.setVisible(false);
+        member.setVisible(false);
+        bill.setVisible(false);
         
         onChangeTabClick(0);
     }//GEN-LAST:event_btnHomeActionPerformed
@@ -481,11 +504,23 @@ public class DashboardScreen extends javax.swing.JFrame {
         
         JPanelHome.setVisible(false);
         product.setVisible(false);
+        bill.setVisible(false);
         
-        onChangeTabClick(0);
+       
         
         onChangeTabClick(3);
     }//GEN-LAST:event_btnMemberActionPerformed
+
+    private void btnBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillActionPerformed
+        // TODO add your handling code here:
+        
+        bill.setVisible(true);
+        member.setVisible(false);
+        JPanelHome.setVisible(false);
+        product.setVisible(false);
+       
+        onChangeTabClick(4);
+    }//GEN-LAST:event_btnBillActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,10 +530,10 @@ public class DashboardScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelHome;
     private javax.swing.JPanel JpanelMain;
+    private javax.swing.JButton btnBill;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnMember;
     private javax.swing.JButton btnProduct;
-    private javax.swing.JButton btnQuanLyKhuyenMai;
     private javax.swing.JButton btnStaff1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
