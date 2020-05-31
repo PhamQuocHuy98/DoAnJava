@@ -36,7 +36,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     
     private final JpanelProduct product = new JpanelProduct();
     
-    private JpanelStaff staff = new JpanelStaff();
+   // private JpanelStaff staff = new JpanelStaff();
     private void onChangeTabClick(int index){
         
         if(index==0){
