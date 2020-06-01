@@ -28,7 +28,7 @@ public class ProductRepository {
         Connection connection  = Connect.connectSQL();
         List<Product> lst = new ArrayList<Product>();
         
-        String query = "SELECT * FROM PRODUCT";
+        String query = "SELECT * FROM SanPham";
         
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -73,7 +73,7 @@ public class ProductRepository {
     
     public boolean insertProductCategory(ProductCategory category){
         
-        System.out.print(category.getTen());
+      
         Connection connection  = Connect.connectSQL();
         String query = "INSERT INTO LoaiSanPham(MaLoaiSanPham,TenLoaiSanPham) VALUES (?,?)";
         try{
@@ -94,4 +94,77 @@ public class ProductRepository {
         }
     }
     
+    
+    public List<ProductCategory> getAllProductCaregory(){
+        
+        
+        Connection connection  = Connect.connectSQL();
+        List<ProductCategory> lst = new ArrayList<ProductCategory>();
+        
+        String query = "SELECT * FROM LoaiSanPham";
+        
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            
+            while(rs.next()){
+                
+               
+                ProductCategory product = new ProductCategory();
+                product.setMa(rs.getString("maloaisanpham"));
+                product.setTen(rs.getString("tenloaisanpham"));
+               
+                lst.add(product);
+            }
+            
+        }catch(Exception e){
+            e.getStackTrace();
+        }
+        return lst;
+        
+    }
+    
+    public boolean deleteProductCategoryById(String ma){
+        
+        Connection connection  = Connect.connectSQL();
+        String query = "DELETE FROM LoaiSanPham WHERE MaLoaiSanPham =?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, ma);
+           
+            int rs = preparedStatement.executeUpdate();
+            
+            return true;
+            
+        }catch(SQLException e){
+           e.getStackTrace();
+           return false;
+        }
+        
+        
+    }
+    
+    public boolean updateProductCategoryById(String ma,String ten){
+        
+        Connection connection  = Connect.connectSQL();
+        String query = "UPDATE LoaiSanPham SET TenLoaiSanPham=? WHERE MaLoaiSanPham=?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, ten);
+            preparedStatement.setString(2, ma);
+           
+            int rs = preparedStatement.executeUpdate();
+            
+            return true;
+            
+        }catch(SQLException e){
+           e.getStackTrace();
+           return false;
+        }
+       
+    }
 }

@@ -11,6 +11,7 @@ import com.nhom4.component.JpanelBill;
 import com.nhom4.component.JpanelMember;
 import com.nhom4.component.JpanelProduct;
 import com.nhom4.component.JpanelStaff;
+
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -46,36 +47,44 @@ public class DashboardScreen extends javax.swing.JFrame {
    // private JpanelStaff staff = new JpanelStaff();
     private void onChangeTabClick(int index){
         
-        if(index==0){
-           resetButton(btnHome,true);
-           resetButton(btnProduct,false);
-           resetButton(btnMember,false);
-           resetButton(btnStaff,false);
-           resetButton(btnBill,false);
-        }else if(index==1){
-           resetButton(btnHome,false);
-           resetButton(btnProduct,true);
-           resetButton(btnMember,false);
-           resetButton(btnStaff,false);
-           resetButton(btnBill,false);
-        }else if(index==2){
-          resetButton(btnHome,false);
-           resetButton(btnProduct,false);
-           resetButton(btnStaff,true);
-           resetButton(btnMember,false);
-           resetButton(btnBill,false);
-        }else if(index==3){
-           resetButton(btnHome,false);
-           resetButton(btnProduct,false);
-           resetButton(btnMember,true);
-           resetButton(btnBill,false);
-           resetButton(btnStaff,false);
-        }else if(index==4){
-           resetButton(btnHome,false);
-           resetButton(btnProduct,false);
-           resetButton(btnMember,false);
-           resetButton(btnBill,true);
-           resetButton(btnStaff,false);
+        switch (index) {
+            case 0:
+                resetButton(btnHome,true);
+                resetButton(btnProduct,false);
+                resetButton(btnMember,false);
+                resetButton(btnStaff,false);
+                resetButton(btnBill,false);
+                break;
+            case 1:
+                resetButton(btnHome,false);
+                resetButton(btnProduct,true);
+                resetButton(btnMember,false);
+                resetButton(btnStaff,false);
+                resetButton(btnBill,false);
+                break;
+            case 2:
+                resetButton(btnHome,false);
+                resetButton(btnProduct,false);
+                resetButton(btnStaff,true);
+                resetButton(btnMember,false);
+                resetButton(btnBill,false);
+                break;
+            case 3:
+                resetButton(btnHome,false);
+                resetButton(btnProduct,false);
+                resetButton(btnMember,true);
+                resetButton(btnBill,false);
+                resetButton(btnStaff,false);
+                break;
+            case 4:
+                resetButton(btnHome,false);
+                resetButton(btnProduct,false);
+                resetButton(btnMember,false);
+                resetButton(btnBill,true);
+                resetButton(btnStaff,false);
+                break;
+            default:
+                break;
         }
        
         
@@ -499,19 +508,24 @@ public class DashboardScreen extends javax.swing.JFrame {
 
     private void btnProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductActionPerformed
         // TODO add your handling code here:
-        
-        JPanelHome.setVisible(false);
         product.setVisible(true);
         
+        
+        JPanelHome.setVisible(false);
+        member.setVisible(false);
+        bill.setVisible(false);
+        staff.setVisible(false);
         onChangeTabClick(1);
     }//GEN-LAST:event_btnProductActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         JPanelHome.setVisible(true);
+        
+        
         product.setVisible(false);
         member.setVisible(false);
         bill.setVisible(false);
-        
+        staff.setVisible(false);
         onChangeTabClick(0);
     }//GEN-LAST:event_btnHomeActionPerformed
 
@@ -519,12 +533,12 @@ public class DashboardScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         member.setVisible(true);
         
+        
         JPanelHome.setVisible(false);
         product.setVisible(false);
         bill.setVisible(false);
-        
+        staff.setVisible(false);
        
-        
         onChangeTabClick(3);
     }//GEN-LAST:event_btnMemberActionPerformed
 
@@ -532,9 +546,11 @@ public class DashboardScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         bill.setVisible(true);
+        
         member.setVisible(false);
         JPanelHome.setVisible(false);
         product.setVisible(false);
+        staff.setVisible(false);
        
         onChangeTabClick(4);
     }//GEN-LAST:event_btnBillActionPerformed
@@ -542,6 +558,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private void btnStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffActionPerformed
         // TODO add your handling code here:
         staff.setVisible(true);
+        
         bill.setVisible(false);
         member.setVisible(false);
         JPanelHome.setVisible(false);

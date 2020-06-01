@@ -7,7 +7,10 @@ package com.nhom4.component;
 
 import com.nhom4.model.ProductCategory;
 import com.nhom4.repository.ProductRepository;
+import java.awt.Point;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,12 +23,28 @@ public class JpanelProduct extends javax.swing.JPanel {
      */
     
     ProductRepository productCategory;
+    List<ProductCategory> allProductCaregory;
     public JpanelProduct() {
         initComponents();
         
         productCategory  = new ProductRepository();
         
+        getAllproductToTable();
+    }
+    private void getAllproductToTable(){
+        allProductCaregory = productCategory.getAllProductCaregory();
         
+        DefaultTableModel defaultTableModel  = new DefaultTableModel();
+        lstLoaiSanPham.setModel(defaultTableModel);
+        
+        defaultTableModel.addColumn("Mã Loại Sản Phẩm");
+        defaultTableModel.addColumn("Tên Loại Sản Phẩm");
+        
+        allProductCaregory.forEach((pro) -> {
+            defaultTableModel.addRow(new Object[]{
+                pro.getMa(),pro.getTen()
+            });
+        });
     }
 
     /**
@@ -53,7 +72,7 @@ public class JpanelProduct extends javax.swing.JPanel {
         updateBtn = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listSp = new javax.swing.JTable();
+        lstSanPham = new javax.swing.JTable();
         jTextField4 = new javax.swing.JTextField();
         timKiemBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -68,7 +87,7 @@ public class JpanelProduct extends javax.swing.JPanel {
         btnSua = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listLoai = new javax.swing.JTable();
+        lstLoaiSanPham = new javax.swing.JTable();
         jTextField5 = new javax.swing.JTextField();
         timKiemBtn1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -116,8 +135,8 @@ public class JpanelProduct extends javax.swing.JPanel {
         updateBtn.setForeground(new java.awt.Color(51, 153, 0));
         updateBtn.setText("Cập Nhật");
 
-        listSp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        listSp.setModel(new javax.swing.table.DefaultTableModel(
+        lstSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lstSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,7 +147,7 @@ public class JpanelProduct extends javax.swing.JPanel {
                 "Mã Sản Phẩm", "Tên Sản Phẩm", "Loại Sản Phẩm", "Kích Cỡ"
             }
         ));
-        jScrollPane1.setViewportView(listSp);
+        jScrollPane1.setViewportView(lstSanPham);
 
         jTextField4.setToolTipText("");
 
@@ -279,13 +298,23 @@ public class JpanelProduct extends javax.swing.JPanel {
         btnXoa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnXoa.setForeground(new java.awt.Color(255, 51, 51));
         btnXoa.setText("Xóa ");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnSua.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSua.setForeground(new java.awt.Color(153, 255, 0));
         btnSua.setText("Cập Nhật");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
-        listLoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        listLoai.setModel(new javax.swing.table.DefaultTableModel(
+        lstLoaiSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lstLoaiSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -296,7 +325,12 @@ public class JpanelProduct extends javax.swing.JPanel {
                 "Mã Loại Sản Phẩm", "Tên Loại Sản Phẩm"
             }
         ));
-        jScrollPane2.setViewportView(listLoai);
+        lstLoaiSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstLoaiSanPhamMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(lstLoaiSanPham);
 
         jTextField5.setToolTipText("");
 
@@ -421,9 +455,46 @@ public class JpanelProduct extends javax.swing.JPanel {
        boolean res = productCategory.insertProductCategory(temp);
        if(res==true){
            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            getAllproductToTable();
+       }else{
+           JOptionPane.showMessageDialog(this, "Đã có lỗi khi thêm");
        }
         
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void lstLoaiSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLoaiSanPhamMouseClicked
+       //System.out.print(txtMaLoai.getText());
+       
+       Point point = evt.getPoint();
+       int colunm = lstLoaiSanPham.rowAtPoint(point);
+       
+       txtMaLoai.setText(allProductCaregory.get(colunm).getMa());
+       txtTenLoai.setText(allProductCaregory.get(colunm).getTen());
+       
+       
+       
+    }//GEN-LAST:event_lstLoaiSanPhamMouseClicked
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+       boolean res= productCategory.deleteProductCategoryById(txtMaLoai.getText());
+       if(res==true){
+           JOptionPane.showMessageDialog(this, "Xoá thành công");
+           getAllproductToTable();
+       }else{
+            JOptionPane.showMessageDialog(this, "Đã có lỗi khi xoá");
+       }
+        
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+       boolean res = productCategory.updateProductCategoryById(txtMaLoai.getText(), txtTenLoai.getText());
+       if(res==true){
+           JOptionPane.showMessageDialog(this, "Sửa thành công");
+           getAllproductToTable();
+       }else{
+            JOptionPane.showMessageDialog(this, "Đã có lỗi khi sửa");
+       }
+    }//GEN-LAST:event_btnSuaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -449,9 +520,9 @@ public class JpanelProduct extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTable listLoai;
-    private javax.swing.JTable listSp;
     private javax.swing.JTextField loaiSpTxt;
+    private javax.swing.JTable lstLoaiSanPham;
+    private javax.swing.JTable lstSanPham;
     private javax.swing.JTextField maSpTxt;
     private javax.swing.JComboBox<String> sizeSPcbb;
     private javax.swing.JTextField tenSpTxt;
