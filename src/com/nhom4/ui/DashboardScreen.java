@@ -6,9 +6,9 @@
 package com.nhom4.ui;
 
 
-import com.nhom4.component.JPanelHomeTest;
 import com.nhom4.component.JpanelBill;
 import com.nhom4.component.JpanelMember;
+import com.nhom4.component.JpanelOrder;
 import com.nhom4.component.JpanelProduct;
 import com.nhom4.component.JpanelStaff;
 
@@ -43,6 +43,8 @@ public class DashboardScreen extends javax.swing.JFrame {
     
     
     private final JpanelStaff staff = new JpanelStaff();
+    
+    private final JpanelOrder order = new JpanelOrder();
     
    // private JpanelStaff staff = new JpanelStaff();
     private void onChangeTabClick(int index){
@@ -129,6 +131,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         
         JpanelMain.add(staff);
       
+        JpanelMain.add(order);
         JPanelHome.setVisible(true);
         startTimer();
         product.setVisible(false);
@@ -167,6 +170,7 @@ public class DashboardScreen extends javax.swing.JFrame {
         btnMember = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnGoiMon = new javax.swing.JButton();
         JpanelMain = new javax.swing.JPanel();
         JPanelHome = new javax.swing.JPanel();
         lblHomeTitle = new javax.swing.JLabel();
@@ -230,6 +234,13 @@ public class DashboardScreen extends javax.swing.JFrame {
 
         jButton2.setText("Đăng Xuất");
 
+        btnGoiMon.setText("Gọi Món");
+        btnGoiMon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGoiMonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -245,6 +256,10 @@ public class DashboardScreen extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGoiMon, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                     .addComponent(btnProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
@@ -265,6 +280,8 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGoiMon, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -567,6 +584,20 @@ public class DashboardScreen extends javax.swing.JFrame {
         onChangeTabClick(2);
     }//GEN-LAST:event_btnStaffActionPerformed
 
+    private void btnGoiMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoiMonActionPerformed
+        // TODO add your handling code here:
+        
+        order.setVisible(true);
+        staff.setVisible(false);
+        
+        bill.setVisible(false);
+        member.setVisible(false);
+        JPanelHome.setVisible(false);
+        product.setVisible(false);
+        
+        onChangeTabClick(7);
+    }//GEN-LAST:event_btnGoiMonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -576,6 +607,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private javax.swing.JPanel JPanelHome;
     private javax.swing.JPanel JpanelMain;
     private javax.swing.JButton btnBill;
+    private javax.swing.JButton btnGoiMon;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnMember;
     private javax.swing.JButton btnProduct;
