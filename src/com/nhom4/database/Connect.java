@@ -9,7 +9,7 @@ import java.sql.*;
 /**
  *
  * @author phamquochuy
- */
+ */ 
 public class Connect {
     public Connection conn = null;
 

@@ -121,7 +121,6 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="label" type="java.lang.String" value="Trang Ch&#x1ee7;"/>
-            <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="btnTrangChu"/>
