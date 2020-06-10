@@ -9,23 +9,23 @@ import java.sql.*;
 /**
  *
  * @author phamquochuy
- */
+ */ 
 public class Connect {
     public Connection conn = null;
 
     public static Connection connectSQL() { 
         try {
                 String userName ="root";
-                String password = "root";
-                String url = "jdbc:mysql://localhost/quanlycaphe?useSSL=false"; 
-                Class.forName("com.mysql.jdbc.Driver");  
+                String password = "";
+                String url = "jdbc:mysql://localhost/quanlycaphe?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; 
+                Class.forName("com.mysql.cj.jdbc.Driver");  
                 
                 return DriverManager.getConnection(url,userName,password);
         }catch (ClassNotFoundException e) {
-           //e.printStackTrace();
+           e.printStackTrace();
           // System.out.print(e);
         }catch (SQLException e){
-            //System.out.print(e);
+            System.out.print(e);
         }
         return null;
     }

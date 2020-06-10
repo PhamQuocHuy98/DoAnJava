@@ -10,6 +10,9 @@ import com.nhom4.component.JpanelBill;
 import com.nhom4.component.JpanelMember;
 import com.nhom4.component.JpanelOrder;
 import com.nhom4.component.JpanelProduct;
+import com.nhom4.component.JpanelProductNew;
+
+
 import com.nhom4.component.JpanelStaff;
 
 import java.awt.Button;
@@ -37,7 +40,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private Timer t;
     
     
-    private final JpanelProduct product = new JpanelProduct();
+    private final JpanelProductNew product = new JpanelProductNew();
     private final JpanelMember member = new JpanelMember();
     private final JpanelBill bill = new JpanelBill();
     
