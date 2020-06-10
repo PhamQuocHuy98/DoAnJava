@@ -50,7 +50,7 @@ public class ProductRepository {
                 lst.add(product);
             }
             
-        }catch(Exception e){
+        }catch(SQLException e){
             e.getStackTrace();
         }
         return lst;
