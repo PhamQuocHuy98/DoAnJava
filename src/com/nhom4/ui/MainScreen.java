@@ -24,6 +24,7 @@ public class MainScreen {
         }else{
             System.out.print("Thất bại");
         }
-        new DashboardScreen().setVisible(true);
+        //new DashboardScreen().setVisible(true);
+        new LoginScreen().setVisible(true);    
     }
 }

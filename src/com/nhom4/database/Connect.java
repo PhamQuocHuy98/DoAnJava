@@ -16,9 +16,9 @@ public class Connect {
     public static Connection connectSQL() { 
         try {
                 String userName ="root";
-                String password = "root";
-                String url = "jdbc:mysql://localhost/quanlycaphe?useSSL=false"; 
-                Class.forName("com.mysql.jdbc.Driver");  
+                String password = "";
+                String url = "jdbc:mysql://localhost/quanlycaphe?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; 
+                Class.forName("com.mysql.cj.jdbc.Driver");  
                 
                 return DriverManager.getConnection(url,userName,password);
         }catch (ClassNotFoundException e) {
