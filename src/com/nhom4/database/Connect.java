@@ -16,16 +16,16 @@ public class Connect {
     public static Connection connectSQL() { 
         try {
                 String userName ="root";
-                String password = "";
+                String password = "root";
                 String url = "jdbc:mysql://localhost/quanlycaphe?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; 
-                Class.forName("com.mysql.cj.jdbc.Driver");  
+                Class.forName("com.mysql.jdbc.Driver");  
                 
                 return DriverManager.getConnection(url,userName,password);
         }catch (ClassNotFoundException e) {
-           //e.printStackTrace();
+           e.printStackTrace();
           // System.out.print(e);
         }catch (SQLException e){
-            //System.out.print(e);
+            System.out.print(e);
         }
         return null;
     }

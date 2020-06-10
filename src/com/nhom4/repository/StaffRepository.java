@@ -58,5 +58,39 @@ public class StaffRepository {
          return lst;
     }
     
-    //public 
+    public boolean insertStaff(Staff staff){
+        
+        Connection connection  = Connect.connectSQL();
+        String query = "INSERT INTO NhanVien (MaNhanVien, TenNhanVien, GioiTinh, ChucVu, DiaChi, SDT, PhanQuyen, MatKhau, Luong) VALUES (?,?,?,?,?,?,?,?,?)";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, staff.getMaNV());
+            
+            preparedStatement.setString(2, staff.getTenNV());
+            
+            preparedStatement.setInt(3, staff.getGioiTinh());
+            
+            preparedStatement.setString(4, staff.getChucVu());
+            
+            preparedStatement.setString(5, staff.getDiaChi());
+            
+            preparedStatement.setString(6, staff.getSdt());
+            
+            preparedStatement.setInt(7, staff.getPhanQuyen());
+            
+            preparedStatement.setString(8, staff.getMatKhau());
+            
+            preparedStatement.setDouble(9, staff.getLuong());
+            
+            int rs = preparedStatement.executeUpdate();
+            
+            return true;
+            
+        }catch(SQLException e){
+           e.getStackTrace();
+           return false;
+        }
+        
+    } 
 }

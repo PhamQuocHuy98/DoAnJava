@@ -9,12 +9,13 @@ import com.nhom4.model.Staff;
 import com.nhom4.repository.StaffRepository;
 import com.nhom4.ui.AddStaffForm;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author phamquochuy
  */
-public class JPanelStaff1 extends javax.swing.JPanel {
+public final class JPanelStaff1 extends javax.swing.JPanel {
 
     /**
      * Creates new form JPanelStaff1
@@ -25,6 +26,10 @@ public class JPanelStaff1 extends javax.swing.JPanel {
     public JPanelStaff1() {
         initComponents();
         
+        initData();
+    }
+    
+    void initData(){
         staffRepo = new StaffRepository();
         
         loadListStaff();
@@ -34,7 +39,35 @@ public class JPanelStaff1 extends javax.swing.JPanel {
     private void loadListStaff(){
        listStaff= staffRepo.getListStaff();
         
-        System.out.print(listStaff.size());
+        
+        DefaultTableModel defaultTableModel  = new DefaultTableModel(
+                
+        ){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+               //all cells false
+               return false;
+            }
+        };
+        
+        lstNhanVien.setModel(defaultTableModel);
+       
+        
+        defaultTableModel.addColumn("Tài khoản");
+        defaultTableModel.addColumn("Tên Nhân Viên");
+        defaultTableModel.addColumn("Giới Tính");
+        defaultTableModel.addColumn("Chức Vụ");
+        defaultTableModel.addColumn("Ngày Vào Làm");
+        defaultTableModel.addColumn("Địa chỉ");
+        defaultTableModel.addColumn("Số Điện Thoại");
+        defaultTableModel.addColumn("Lương");
+        
+        
+        listStaff.forEach((staff) -> {
+            defaultTableModel.addRow(new Object[]{
+                staff.getMaNV(),staff.getTenNV(),staff.getGioiTinh(),staff.getChucVu(),1900,staff.getSdt(),staff.getDiaChi(),staff.getLuong()
+            });
+        });
     }
 
     /**
@@ -50,7 +83,8 @@ public class JPanelStaff1 extends javax.swing.JPanel {
         txtTimKiem = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbNhanVien = new javax.swing.JTable();
+        lstNhanVien = new javax.swing.JTable();
+        btnRefesh = new javax.swing.JButton();
 
         btnThemMoi.setBackground(new java.awt.Color(76, 175, 80));
         btnThemMoi.setForeground(new java.awt.Color(255, 255, 255));
@@ -65,7 +99,7 @@ public class JPanelStaff1 extends javax.swing.JPanel {
 
         txtTimKiem.setText("Tìm kiếm");
 
-        tbNhanVien.setModel(new javax.swing.table.DefaultTableModel(
+        lstNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
@@ -74,13 +108,18 @@ public class JPanelStaff1 extends javax.swing.JPanel {
                 "Mã Nhân Viên", "Họ và Tên", "Giới Tính", "Ngày Sinh", "SĐT", "Địa Chỉ", "Lương"
             }
         ));
-        jScrollPane1.setViewportView(tbNhanVien);
+        lstNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstNhanVienMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstNhanVien);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,6 +128,13 @@ public class JPanelStaff1 extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        btnRefesh.setText("Refesh");
+        btnRefesh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefeshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,6 +149,8 @@ public class JPanelStaff1 extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRefesh, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
                         .addComponent(btnThemMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))))
         );
@@ -110,9 +158,11 @@ public class JPanelStaff1 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThemMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnThemMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRefesh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -122,17 +172,43 @@ public class JPanelStaff1 extends javax.swing.JPanel {
     private void btnThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiActionPerformed
         // TODO add your handling code here:
         
-      AddStaffForm  addStaffForm= new AddStaffForm();
-      addStaffForm.setLocationRelativeTo(null);
-      addStaffForm.setVisible(true);
+      AddStaffForm  addSataffForm= new AddStaffForm();
+      addSataffForm.setStaffRepo(staffRepo);
+      addSataffForm.setLocationRelativeTo(null);
+      addSataffForm.setVisible(true);
+      
+      
     }//GEN-LAST:event_btnThemMoiActionPerformed
+
+    private void btnRefeshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefeshActionPerformed
+        initData();
+    }//GEN-LAST:event_btnRefeshActionPerformed
+
+    private void lstNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstNhanVienMouseClicked
+            if(evt.getClickCount()==2 && lstNhanVien.getSelectedRow()!=-1 ){
+                DefaultTableModel defaultTableModel  = ( DefaultTableModel) lstNhanVien.getModel();
+                
+                int selectedRowIndex =lstNhanVien.getSelectedRow();
+                
+                selectedRowIndex=lstNhanVien.convertRowIndexToModel(selectedRowIndex);
+                
+                System.out.print(selectedRowIndex);
+                
+                AddStaffForm  addSataffForm= new AddStaffForm();
+                addSataffForm.setStaffRepo(staffRepo);
+                addSataffForm.setLocationRelativeTo(null);
+                addSataffForm.setVisible(true);
+                
+            }
+    }//GEN-LAST:event_lstNhanVienMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRefesh;
     private javax.swing.JButton btnThemMoi;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbNhanVien;
+    private javax.swing.JTable lstNhanVien;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 }
