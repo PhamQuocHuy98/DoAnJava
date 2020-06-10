@@ -6,6 +6,7 @@
 package com.nhom4.ui;
 
 
+import com.nhom4.component.JPanelStaff1;
 import com.nhom4.component.JpanelBill;
 import com.nhom4.component.JpanelMember;
 import com.nhom4.component.JpanelOrder;
@@ -42,7 +43,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private final JpanelBill bill = new JpanelBill();
     
     
-    private final JpanelStaff staff = new JpanelStaff();
+    private final JPanelStaff1 staff = new JPanelStaff1();
     
     private final JpanelOrder order = new JpanelOrder();
     
@@ -507,7 +508,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JpanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JpanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -517,7 +518,7 @@ public class DashboardScreen extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JpanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(JpanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE))
         );
 
         pack();
