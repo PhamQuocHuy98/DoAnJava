@@ -93,4 +93,63 @@ public class StaffRepository {
         }
         
     } 
+    public boolean updateStaff(Staff staff){
+        
+        Connection connection  = Connect.connectSQL();
+        String query = "UPDATE NhanVien SET TenNhanVien=?,GioiTinh=?,ChucVu=?,DiaChi=?,SDT=?,PhanQuyen=?,MatKhau=?,Luong=? WHERE MaNhanVien=?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            
+           // preparedStatement.setString(1, staff.getMaNV());
+            
+            preparedStatement.setString(1, staff.getTenNV());
+            
+            preparedStatement.setInt(2, staff.getGioiTinh());
+            
+            preparedStatement.setString(3, staff.getChucVu());
+            
+            preparedStatement.setString(4, staff.getDiaChi());
+            
+            preparedStatement.setString(5, staff.getSdt());
+            
+            preparedStatement.setInt(6, staff.getPhanQuyen());
+            
+            preparedStatement.setString(7, staff.getMatKhau());
+            
+            preparedStatement.setDouble(8, staff.getLuong());
+            
+            preparedStatement.setString(9, staff.getMaNV());
+            
+            
+           // System.out.print(preparedStatement.toString());
+            int rs = preparedStatement.executeUpdate();
+            
+            return rs != 0;
+            
+        }catch(SQLException e){
+           e.getStackTrace();
+           return false;
+        }
+        
+    } 
+
+    public boolean deleteStaff(String staffID){
+        Connection connection  = Connect.connectSQL();
+        String query = "DELETE FROM NhanVien WHERE MaNhanVien =?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, staffID);
+           
+            int rs = preparedStatement.executeUpdate();
+            
+            return true;
+            
+        }catch(SQLException e){
+           e.getStackTrace();
+           return false;
+        }
+        
+    }
 }

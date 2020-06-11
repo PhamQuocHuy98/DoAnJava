@@ -8,7 +8,10 @@ package com.nhom4.component;
 import com.nhom4.model.Staff;
 import com.nhom4.repository.StaffRepository;
 import com.nhom4.ui.AddStaffForm;
+import java.text.DecimalFormat;
 import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,6 +56,8 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
         lstNhanVien.setModel(defaultTableModel);
        
         
+        
+        
         defaultTableModel.addColumn("Tài khoản");
         defaultTableModel.addColumn("Tên Nhân Viên");
         defaultTableModel.addColumn("Giới Tính");
@@ -61,15 +66,24 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
         defaultTableModel.addColumn("Địa chỉ");
         defaultTableModel.addColumn("Số Điện Thoại");
         defaultTableModel.addColumn("Lương");
+        defaultTableModel.addColumn("Tác vụ");
         
+        JLabel lebl=new JLabel("");
+        lebl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/Add.png")));
         
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
         listStaff.forEach((staff) -> {
             defaultTableModel.addRow(new Object[]{
-                staff.getMaNV(),staff.getTenNV(),staff.getGioiTinh(),staff.getChucVu(),1900,staff.getSdt(),staff.getDiaChi(),staff.getLuong()
+                staff.getMaNV(),staff.getTenNV(),mapSexIntToString(staff.getGioiTinh()),staff.getChucVu(),1900,staff.getSdt(),staff.getDiaChi(),formatter.format(staff.getLuong()),lebl
             });
         });
     }
 
+    String mapSexIntToString(int sex){
+        return sex==0?"Nữ":"Nam";
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,6 +125,9 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
         lstNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lstNhanVienMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lstNhanVienMouseReleased(evt);
             }
         });
         jScrollPane1.setViewportView(lstNhanVien);
@@ -174,6 +191,7 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
         
       AddStaffForm  addSataffForm= new AddStaffForm();
       addSataffForm.setStaffRepo(staffRepo);
+      addSataffForm.initValue();
       addSataffForm.setLocationRelativeTo(null);
       addSataffForm.setVisible(true);
       
@@ -196,11 +214,17 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
                 
                 AddStaffForm  addSataffForm= new AddStaffForm();
                 addSataffForm.setStaffRepo(staffRepo);
+                addSataffForm.setStaffModel(listStaff.get(selectedRowIndex));
+                addSataffForm.initValue();
                 addSataffForm.setLocationRelativeTo(null);
                 addSataffForm.setVisible(true);
                 
             }
     }//GEN-LAST:event_lstNhanVienMouseClicked
+
+    private void lstNhanVienMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstNhanVienMouseReleased
+        
+    }//GEN-LAST:event_lstNhanVienMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

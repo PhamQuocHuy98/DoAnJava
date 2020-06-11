@@ -7,6 +7,7 @@ package com.nhom4.ui;
 
 import com.nhom4.model.Staff;
 import com.nhom4.repository.StaffRepository;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,15 +21,51 @@ public class AddStaffForm extends javax.swing.JFrame {
     
     private StaffRepository staffRepo;
     
+    private Staff staffModel;
+    
     public void setStaffRepo(StaffRepository repo ){
         this.staffRepo= repo;
+        
+        
+    }
+    
+    public void setStaffModel(Staff model){
+        this.staffModel = model;
+        
     }
     
     public AddStaffForm() {
         initComponents();
+        
+        
     }
     
-    
+    public void initValue(){
+        if(staffModel==null){
+            txtTaiKhoan.setText("");
+            txtSDT.setText("");
+            txtLuong.setText("");
+            txtDiaChi.setText("");
+            txtHoTen.setText("");
+           // txtDiaChi.setText("");
+            txtMatKhau.setText("");
+            rbGioiTinhNam.setSelected(true);
+            rbGioiTinhNu.setSelected(false);
+        }else{
+            txtTaiKhoan.setText(staffModel.getMaNV());
+            txtSDT.setText(staffModel.getSdt());
+            txtLuong.setText(String.valueOf(staffModel.getLuong()));
+            txtDiaChi.setText(staffModel.getDiaChi());
+            txtHoTen.setText(staffModel.getTenNV());
+            txtMatKhau.enableInputMethods(false);
+            
+            boolean gioitinh = staffModel.getGioiTinh() != 0;
+            rbGioiTinhNam.setSelected(gioitinh);
+            rbGioiTinhNu.setSelected(!gioitinh);
+            
+            cbPhanQuyen.setSelectedItem(staffModel.getChucVu());
+        }
+    }
     int mapStringtoInt(String value){
         switch (value) {
             case "Toàn Quyền":
@@ -148,10 +185,6 @@ public class AddStaffForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addGap(143, 143, 143))
             .addGroup(layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,27 +216,27 @@ public class AddStaffForm extends javax.swing.JFrame {
                         .addGap(129, 129, 129)
                         .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblEmail2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblGioiTinh)
-                            .addComponent(lblHovaten)
-                            .addComponent(lblSDT))
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(rbGioiTinhNam)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbGioiTinhNu)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(txtHoTen))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblGioiTinh)
+                                .addComponent(lblHovaten)
+                                .addComponent(lblSDT))
+                            .addGap(59, 59, 59)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(rbGioiTinhNam)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(rbGioiTinhNu))
+                                .addComponent(txtHoTen)))))
                 .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(btnSave)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbltaikhoan)
@@ -216,11 +249,10 @@ public class AddStaffForm extends javax.swing.JFrame {
                         .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblMatKhau))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblGioiTinh)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbGioiTinhNam)
-                            .addComponent(rbGioiTinhNu))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(rbGioiTinhNam)
+                        .addComponent(rbGioiTinhNu))
+                    .addComponent(lblGioiTinh))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbPhanQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,17 +289,37 @@ public class AddStaffForm extends javax.swing.JFrame {
         
         
         //mapStringtoInt(cbPhanQuyen.getSelectedIndex());
-        staff.setChucVu(String.valueOf(cbPhanQuyen.getSelectedIndex()));
+        
+     
+        staff.setChucVu((cbPhanQuyen.getSelectedItem().toString()));
         
         staff.setDiaChi(txtDiaChi.getText());
         
         staff.setLuong(Double.valueOf(txtLuong.getText()));
         
-        staff.setPhanQuyen(0);
+       // staff.setPhanQuyen(0);
         
         staff.setMatKhau(txtMatKhau.getText());
         
-        staffRepo.insertStaff(staff);
+        if(staffModel==null){
+            boolean res =staffRepo.insertStaff(staff);
+            if(res==true){
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "Thêm thất bại");
+            }
+        }else{
+            
+            boolean res = staffRepo.updateStaff(staff);
+            if(res==true){
+                JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại");
+            }
+        }
+        this.dispose();
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
