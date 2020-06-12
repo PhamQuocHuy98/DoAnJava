@@ -6,6 +6,7 @@
 package com.nhom4.repository;
 
 import com.nhom4.database.Connect;
+import com.nhom4.ui.MainScreen;
 import java.awt.Component;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +23,7 @@ public class LoginRepository {
 
     public boolean login(String name, String pass){
         Connection connection  = Connect.connectSQL();
-        String query = "SELECT PHANQUYEN FROM NHANVIEN WHERE MANHANVIEN =? AND MATKHAU=?";
+        String query = "SELECT ChucVu, MaNhanVien FROM NHANVIEN WHERE MANHANVIEN =? AND MATKHAU=?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             
@@ -30,7 +31,13 @@ public class LoginRepository {
             preparedStatement.setString(2, pass);
            
             ResultSet rs = preparedStatement.executeQuery();
-            return rs.next();
+            while(rs.next()){
+                MainScreen.staffRole=rs.getString("chucvu");
+                MainScreen.StaffId =rs.getString("manhanvien");
+                
+                return true;
+            }
+            return false;
           
         }catch(SQLException e){
            e.getStackTrace();
