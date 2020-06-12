@@ -280,6 +280,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m SP"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="themBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="xoaBtn">
               <Properties>
