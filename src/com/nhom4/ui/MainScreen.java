@@ -6,13 +6,15 @@
 package com.nhom4.ui;
 
 import com.nhom4.database.Connect;
-import javax.swing.JFrame;
 
 /**
  *
  * @author phamquochuy
  */
 public class MainScreen {
+    
+    public static String staffRole;
+    public static String StaffId;
     
     public static void main (String [] args){
         
@@ -24,8 +26,12 @@ public class MainScreen {
         }else{
             System.out.print("Thất bại");
         }
-        new DashboardScreen().setVisible(true);
-        //new LoginScreen().setVisible(true);       
+        
+        LoginScreen  loginForm= new LoginScreen();
+     
+        loginForm.setLocationRelativeTo(null);
+        loginForm.setVisible(true);
+         
 
     }
 }
