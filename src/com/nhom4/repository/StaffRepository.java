@@ -83,6 +83,7 @@ public class StaffRepository {
             
             preparedStatement.setDouble(9, staff.getLuong());
             
+            System.out.println(preparedStatement);
             int rs = preparedStatement.executeUpdate();
             
             return true;

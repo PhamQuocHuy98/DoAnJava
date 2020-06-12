@@ -126,6 +126,11 @@ public class JpanelProduct extends javax.swing.JPanel {
         themBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         themBtn.setForeground(new java.awt.Color(51, 153, 0));
         themBtn.setText("Thêm SP");
+        themBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themBtnActionPerformed(evt);
+            }
+        });
 
         xoaBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         xoaBtn.setForeground(new java.awt.Color(255, 51, 51));
@@ -492,6 +497,10 @@ public class JpanelProduct extends javax.swing.JPanel {
     private void txtMaLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaLoaiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaLoaiActionPerformed
+
+    private void themBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_themBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
