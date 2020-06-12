@@ -41,7 +41,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnThemMoi" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
                   <Component id="txtTimKiem" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="btnRefesh" alignment="3" pref="53" max="32767" attributes="0"/>
+                  <Component id="btnRefesh" alignment="3" max="32767" attributes="0"/>
                   <Component id="btnXoa" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -62,7 +62,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Th&#xea;m m&#x1edb;i"/>
         <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemMoiActionPerformed"/>
@@ -143,9 +142,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Xoa"/>
+        <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
         <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>

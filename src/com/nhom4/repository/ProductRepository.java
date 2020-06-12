@@ -139,7 +139,24 @@ public class ProductRepository {
            return false;
         }
     }
-    
+    public boolean deleteProduct(String productID){
+        Connection connection  = Connect.connectSQL();
+        String query = "DELETE FROM SanPham WHERE MaSanPham =?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, productID);
+           
+            int rs = preparedStatement.executeUpdate();
+            
+            return true;
+            
+        }catch(SQLException e){
+           e.getStackTrace();
+           return false;
+        }
+        
+    }
     
     public List<ProductCategory> getAllProductCaregory(){
         

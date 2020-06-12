@@ -10,6 +10,7 @@ import com.nhom4.repository.ProductRepository;
 import com.nhom4.ui.FormProduct;
 import java.text.DecimalFormat;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,9 +58,9 @@ public class JpanelProductNew extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstSanPham = new javax.swing.JTable();
         jTextField4 = new javax.swing.JTextField();
-        timKiemBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnFreshPro = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         btnThemLoai = new javax.swing.JButton();
@@ -109,13 +110,6 @@ public class JpanelProductNew extends javax.swing.JPanel {
 
         jTextField4.setToolTipText("");
 
-        timKiemBtn.setText("...");
-        timKiemBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timKiemBtnActionPerformed(evt);
-            }
-        });
-
         btnFreshPro.setBackground(new java.awt.Color(0, 153, 0));
         btnFreshPro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnFreshPro.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,6 +117,15 @@ public class JpanelProductNew extends javax.swing.JPanel {
         btnFreshPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFreshProActionPerformed(evt);
+            }
+        });
+
+        btnXoa.setBackground(new java.awt.Color(255, 0, 0));
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
             }
         });
 
@@ -140,21 +143,16 @@ public class JpanelProductNew extends javax.swing.JPanel {
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(timKiemBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(18, 275, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(25, 25, 25))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(480, 480, 480)
+                                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnFreshPro, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(themBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(167, Short.MAX_VALUE))))
@@ -166,23 +164,23 @@ public class JpanelProductNew extends javax.swing.JPanel {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
+                            .addGap(49, 49, 49)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(timKiemBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(themBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(themBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnFreshPro, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel22)
-                            .addGap(28, 28, 28)
-                            .addComponent(btnFreshPro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGap(84, 84, 84)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel17)
                         .addGap(84, 84, 84)))
-                .addGap(31, 31, 31)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,10 +359,6 @@ public class JpanelProductNew extends javax.swing.JPanel {
         formProduct.setVisible(true);
     }//GEN-LAST:event_themBtnActionPerformed
 
-    private void timKiemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timKiemBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_timKiemBtnActionPerformed
-
     private void btnThemLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemLoaiActionPerformed
         // TODO add your handling code here:
 
@@ -408,11 +402,32 @@ public class JpanelProductNew extends javax.swing.JPanel {
         initData();        // TODO add your handling code here:
     }//GEN-LAST:event_btnFreshProActionPerformed
 
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        int selectedRowIndex =lstSanPham.getSelectedRow();
+         selectedRowIndex=lstSanPham.convertRowIndexToModel(selectedRowIndex);
+         if(selectedRowIndex<0 || selectedRowIndex>= listProduct.size()){
+           // System.out.print("Chọn nhân viên để xoá");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn món cần xoá", "Thông báo!",
+            JOptionPane.INFORMATION_MESSAGE);
+         }else{
+             int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn muốn xoá món này "+listProduct.get(selectedRowIndex).getMa(),"Thông báo",JOptionPane.YES_NO_OPTION);
+              if(dialogResult == JOptionPane.YES_OPTION){
+                 if (productRepo.deleteProduct(listProduct.get(selectedRowIndex).getMa()) == true){
+                     initData();
+                 }
+              }else{
+                  
+              }
+             
+         }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFreshPro;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnThemLoai;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
@@ -429,7 +444,6 @@ public class JpanelProductNew extends javax.swing.JPanel {
     private javax.swing.JTable lstLoaiSanPham;
     private javax.swing.JTable lstSanPham;
     private javax.swing.JButton themBtn;
-    private javax.swing.JButton timKiemBtn;
     private javax.swing.JButton timKiemBtn1;
     // End of variables declaration//GEN-END:variables
 }

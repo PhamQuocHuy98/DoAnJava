@@ -98,7 +98,6 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
         btnThemMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnThemMoi.setText("Thêm mới");
         btnThemMoi.setBorderPainted(false);
-        btnThemMoi.setOpaque(true);
         btnThemMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemMoiActionPerformed(evt);
@@ -155,9 +154,8 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
 
         btnXoa.setBackground(new java.awt.Color(255, 51, 51));
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
-        btnXoa.setText("Xoa");
+        btnXoa.setText("Xoá");
         btnXoa.setBorderPainted(false);
-        btnXoa.setOpaque(true);
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -189,7 +187,7 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRefesh, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                    .addComponent(btnRefesh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
