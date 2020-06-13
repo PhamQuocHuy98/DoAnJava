@@ -6,7 +6,9 @@
 package com.nhom4.component;
 
 import com.nhom4.model.Product;
+import com.nhom4.model.ProductCategory;
 import com.nhom4.repository.ProductRepository;
+import com.nhom4.ui.FormCategoryProduct;
 import com.nhom4.ui.FormProduct;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -22,8 +24,9 @@ public class JpanelProductNew extends javax.swing.JPanel {
     /**
      * Creates new form JpanelProductNew
      */
-    
+    private ProductRepository cateRepo;
     private ProductRepository productRepo;
+    private List<ProductCategory> listCate;
     private List<Product> listProduct;
     public JpanelProductNew() {
         
@@ -32,8 +35,12 @@ public class JpanelProductNew extends javax.swing.JPanel {
         
         productRepo=new ProductRepository();
         loadListProduct();
-        
+        initData1();
        // listProduct =new List<Product>();
+    }
+    void initData1(){
+        cateRepo = new ProductRepository();
+        loadListCategory();
     }
     void initData(){
         productRepo = new ProductRepository();
@@ -68,9 +75,9 @@ public class JpanelProductNew extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstLoaiSanPham = new javax.swing.JTable();
         jTextField5 = new javax.swing.JTextField();
-        timKiemBtn1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnLamMoi = new javax.swing.JButton();
+        bnXoa = new javax.swing.JButton();
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -84,7 +91,6 @@ public class JpanelProductNew extends javax.swing.JPanel {
         themBtn.setForeground(new java.awt.Color(255, 255, 255));
         themBtn.setText("Thêm SP");
         themBtn.setBorderPainted(false);
-        themBtn.setOpaque(true);
         themBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 themBtnActionPerformed(evt);
@@ -117,7 +123,6 @@ public class JpanelProductNew extends javax.swing.JPanel {
         btnFreshPro.setForeground(new java.awt.Color(255, 255, 255));
         btnFreshPro.setText("Làm Mới");
         btnFreshPro.setBorderPainted(false);
-        btnFreshPro.setOpaque(true);
         btnFreshPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFreshProActionPerformed(evt);
@@ -128,7 +133,6 @@ public class JpanelProductNew extends javax.swing.JPanel {
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setText("Xóa");
         btnXoa.setBorderPainted(false);
-        btnXoa.setOpaque(true);
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -233,12 +237,6 @@ public class JpanelProductNew extends javax.swing.JPanel {
 
         jTextField5.setToolTipText("");
 
-        timKiemBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timKiemBtn1ActionPerformed(evt);
-            }
-        });
-
         btnLamMoi.setBackground(new java.awt.Color(0, 153, 0));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
@@ -246,6 +244,16 @@ public class JpanelProductNew extends javax.swing.JPanel {
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiActionPerformed(evt);
+            }
+        });
+
+        bnXoa.setBackground(new java.awt.Color(255, 0, 0));
+        bnXoa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bnXoa.setForeground(new java.awt.Color(255, 255, 255));
+        bnXoa.setText("Xóa");
+        bnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bnXoaActionPerformed(evt);
             }
         });
 
@@ -263,12 +271,12 @@ public class JpanelProductNew extends javax.swing.JPanel {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                        .addComponent(timKiemBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
                                         .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnThemLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -289,15 +297,15 @@ public class JpanelProductNew extends javax.swing.JPanel {
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnThemLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnLamMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(timKiemBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(72, 72, 72)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -356,6 +364,37 @@ public class JpanelProductNew extends javax.swing.JPanel {
             });
         });
     }
+    
+    private void loadListCategory(){
+       listCate = cateRepo.getAllProductCaregory();
+        
+        DefaultTableModel defaultTableModel  = new DefaultTableModel(
+                
+        ){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+               //all cells false
+               return false;
+            }
+        };
+        
+        lstLoaiSanPham.setModel(defaultTableModel);
+       
+        
+        
+        
+        defaultTableModel.addColumn("Mã Loại sản phẩm");
+        defaultTableModel.addColumn("Tên Loại sản phẩm");      
+       
+        
+        
+        listCate.forEach((pro) -> {
+            defaultTableModel.addRow(new Object[]{
+                pro.getMa(),pro.getTen(),
+            });
+        });
+    }
+    
     private void themBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themBtnActionPerformed
         // TODO add your handling code here:
         FormProduct formProduct = new FormProduct();
@@ -366,18 +405,34 @@ public class JpanelProductNew extends javax.swing.JPanel {
     }//GEN-LAST:event_themBtnActionPerformed
 
     private void btnThemLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemLoaiActionPerformed
+        FormCategoryProduct formCategory = new FormCategoryProduct();
+        formCategory.setCateRepo(cateRepo);
+        formCategory.setLocationRelativeTo(null);
+        formCategory.setVisible(true);
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btnThemLoaiActionPerformed
 
     private void lstLoaiSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLoaiSanPhamMouseClicked
         //System.out.print(txtMaLoai.getText());
-
+         if(evt.getClickCount()==2 && lstLoaiSanPham.getSelectedRow()!=-1 ){
+                DefaultTableModel defaultTableModel  = ( DefaultTableModel) lstLoaiSanPham.getModel();
+                
+                int selectedRowIndex =lstLoaiSanPham.getSelectedRow();
+                
+                selectedRowIndex=lstLoaiSanPham.convertRowIndexToModel(selectedRowIndex);
+                
+                System.out.print(selectedRowIndex);
+                
+                FormCategoryProduct formCategory= new FormCategoryProduct();
+                formCategory.setCateRepo(cateRepo);
+                formCategory.setCateModel(listCate.get(selectedRowIndex));
+                formCategory.initValue();
+                formCategory.setLocationRelativeTo(null);
+                formCategory.setVisible(true);
+                
+            }
     }//GEN-LAST:event_lstLoaiSanPhamMouseClicked
-
-    private void timKiemBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timKiemBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_timKiemBtn1ActionPerformed
 
     private void lstSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstSanPhamMouseClicked
         // TODO add your handling code here:
@@ -402,6 +457,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
                 // TODO add your handling code here:
+                initData1();  
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnFreshProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFreshProActionPerformed
@@ -428,8 +484,30 @@ public class JpanelProductNew extends javax.swing.JPanel {
          }        // TODO add your handling code here:
     }//GEN-LAST:event_btnXoaActionPerformed
 
+    private void bnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnXoaActionPerformed
+        // TODO add your handling code here:
+         int selectedRowIndex =lstLoaiSanPham.getSelectedRow();
+         selectedRowIndex=lstLoaiSanPham.convertRowIndexToModel(selectedRowIndex);
+         if(selectedRowIndex<0 || selectedRowIndex>= listCate.size()){
+           // System.out.print("Chọn nhân viên để xoá");
+            JOptionPane.showMessageDialog(this, "Vui lòng Loại cần xoá", "Thông báo!",
+            JOptionPane.INFORMATION_MESSAGE);
+         }else{
+             int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn muốn xoá Loại này "+listCate.get(selectedRowIndex).getMa(),"Thông báo",JOptionPane.YES_NO_OPTION);
+              if(dialogResult == JOptionPane.YES_OPTION){
+                 if (cateRepo.deleteProductCategoryById(listCate.get(selectedRowIndex).getMa()) == true){
+                     initData1();
+                 }
+              }else{
+                  
+              }
+             
+         }
+    }//GEN-LAST:event_bnXoaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bnXoa;
     private javax.swing.JButton btnFreshPro;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnThemLoai;
@@ -450,6 +528,5 @@ public class JpanelProductNew extends javax.swing.JPanel {
     private javax.swing.JTable lstLoaiSanPham;
     private javax.swing.JTable lstSanPham;
     private javax.swing.JButton themBtn;
-    private javax.swing.JButton timKiemBtn1;
     // End of variables declaration//GEN-END:variables
 }
