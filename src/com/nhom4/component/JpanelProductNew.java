@@ -83,6 +83,8 @@ public class JpanelProductNew extends javax.swing.JPanel {
         themBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         themBtn.setForeground(new java.awt.Color(255, 255, 255));
         themBtn.setText("Thêm SP");
+        themBtn.setBorderPainted(false);
+        themBtn.setOpaque(true);
         themBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 themBtnActionPerformed(evt);
@@ -114,6 +116,8 @@ public class JpanelProductNew extends javax.swing.JPanel {
         btnFreshPro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnFreshPro.setForeground(new java.awt.Color(255, 255, 255));
         btnFreshPro.setText("Làm Mới");
+        btnFreshPro.setBorderPainted(false);
+        btnFreshPro.setOpaque(true);
         btnFreshPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFreshProActionPerformed(evt);
@@ -123,6 +127,8 @@ public class JpanelProductNew extends javax.swing.JPanel {
         btnXoa.setBackground(new java.awt.Color(255, 0, 0));
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setText("Xóa");
+        btnXoa.setBorderPainted(false);
+        btnXoa.setOpaque(true);
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
