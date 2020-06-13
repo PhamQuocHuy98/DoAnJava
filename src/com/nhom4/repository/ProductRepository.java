@@ -230,4 +230,45 @@ public class ProductRepository {
         }
        
     }
+    
+    /**
+     *
+     * @param categoryID
+     * @return List product
+     */
+    public List<Product> getProductByCategoryId(String categoryID){
+        
+        Connection connection  = Connect.connectSQL();
+        String query = "SELECT * FROM SanPham WHERE MaLoaiSanPham = ? ";
+        List<Product> lst = new ArrayList<>();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, categoryID);
+           
+           
+            ResultSet rs = preparedStatement.executeQuery();
+            
+           while(rs.next()){
+                
+               
+                Product product = new Product();
+                product.setMa(rs.getString("masanpham"));
+                product.setTen(rs.getString("tensanpham"));
+                product.setGia(rs.getDouble("gia"));
+                product.setKichco(rs.getString("kichthuoc"));
+                product.setHinhanh(rs.getString("hinhanh"));
+                product.setMaLoaiSanPham(rs.getString("maloaisanpham"));
+                
+                lst.add(product);
+            }
+            
+        }catch(SQLException e){
+           e.getStackTrace();
+           
+        }
+        
+        return null;
+        
+    }
 }
