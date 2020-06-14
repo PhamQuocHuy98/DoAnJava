@@ -485,13 +485,7 @@ public class JpanelProduct extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        boolean res = productCategory.updateProductCategoryById(txtMaLoai.getText(), txtTenLoai.getText());
-        if(res==true){
-            JOptionPane.showMessageDialog(this, "Sửa thành công");
-            getAllproductToTable();
-        }else{
-            JOptionPane.showMessageDialog(this, "Đã có lỗi khi sửa");
-        }
+        
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void txtMaLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaLoaiActionPerformed

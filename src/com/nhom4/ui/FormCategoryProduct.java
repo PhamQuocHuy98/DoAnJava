@@ -5,6 +5,11 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.model.ProductCategory;
+import com.nhom4.repository.ProductRepository;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author COMPUTER
@@ -14,8 +19,34 @@ public class FormCategoryProduct extends javax.swing.JFrame {
     /**
      * Creates new form FormCategoryProduct
      */
+    private ProductCategory categoryModel;
+    private ProductRepository cateRepo;
+   
+    public void setCateRepo(ProductRepository repo){
+        this.cateRepo = repo;
+        
+    }
+    
+    public void setCateModel(ProductCategory model){
+        this.categoryModel=model;
+    }
+    
+    
     public FormCategoryProduct() {
         initComponents();
+    }
+    public void initValue(){
+         
+        if(categoryModel==null){
+            txtMaLoai.setText("");
+            txtTenLoai.setText("");
+            
+            
+        }else{
+            txtMaLoai.setText(categoryModel.getMa());
+            txtTenLoai.setText(categoryModel.getTen());
+          
+        }
     }
 
     /**
@@ -29,19 +60,19 @@ public class FormCategoryProduct extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        maLoaiSpTxt = new javax.swing.JTextField();
-        loaiSpTxt = new javax.swing.JTextField();
+        txtMaLoai = new javax.swing.JTextField();
+        txtTenLoai = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin loại sản phẩm"));
 
-        maLoaiSpTxt.setText("CF");
+        txtMaLoai.setText("CF");
 
-        loaiSpTxt.setText("Cà Phê");
+        txtTenLoai.setText("Cà Phê");
 
         jLabel20.setText("Tên Loại Sản Phẩm:");
 
@@ -58,8 +89,8 @@ public class FormCategoryProduct extends javax.swing.JFrame {
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(maLoaiSpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loaiSpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTenLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -67,31 +98,36 @@ public class FormCategoryProduct extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(maLoaiSpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loaiSpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTenLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Lưu dữ liệu");
+        btnSave.setBackground(new java.awt.Color(0, 153, 0));
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("Lưu dữ liệu");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -117,15 +153,43 @@ public class FormCategoryProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+                    // TODO add your handling code here:
+         ProductCategory category = new ProductCategory();            
+        
+        category.setMa(txtMaLoai.getText());
+        category.setTen(txtTenLoai.getText());
+
+       
+        if(categoryModel==null){
+            boolean res =cateRepo.insertProductCategory(category);
+            if(res==true){
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "Thêm thất bại");
+            }
+        }else{
+            boolean res = cateRepo.updateProductCategoryById(category);
+            if(res==true){
+                JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại");
+            }
+        }
+        this.dispose();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField loaiSpTxt;
-    private javax.swing.JTextField maLoaiSpTxt;
+    private javax.swing.JTextField txtMaLoai;
+    private javax.swing.JTextField txtTenLoai;
     // End of variables declaration//GEN-END:variables
 }
