@@ -74,12 +74,12 @@ public class JpanelBill extends javax.swing.JPanel {
                 .addComponent(btnTimKiem)
                 .addGap(18, 18, 18)
                 .addComponent(btnLamMoi)
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(7, 7, 7)
-                    .addComponent(jScrollPane1)
-                    .addGap(7, 7, 7)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
