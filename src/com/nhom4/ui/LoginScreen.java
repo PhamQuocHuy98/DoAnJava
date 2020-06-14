@@ -19,7 +19,7 @@ public class LoginScreen extends javax.swing.JFrame {
      * Creates new form LoginScreen
      */
     
-    private LoginRepository loginRepo;
+    private final LoginRepository loginRepo;
     public LoginScreen() {
         initComponents();
         loginRepo = new  LoginRepository();    
@@ -132,10 +132,15 @@ public class LoginScreen extends javax.swing.JFrame {
         
         JFrame frame = new JFrame("JOptionPane showMessageDialog example");
        boolean result = loginRepo.login(name, pass);
-       String pq = loginRepo.rules(name);
+       
        if (result == true) {
-           System.out.print(pq);
+         
            JOptionPane.showMessageDialog(frame, "Bạn đăng nhập thành công");
+           
+           new DashboardScreen().setVisible(true);
+           
+           this.dispose();
+           
        } else {
             JOptionPane.showMessageDialog(frame, "Bạn đăng nhập thất bại");
        }

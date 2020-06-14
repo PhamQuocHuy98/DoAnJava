@@ -10,17 +10,14 @@ import com.nhom4.component.JPanelStaff1;
 import com.nhom4.component.JpanelBill;
 import com.nhom4.component.JpanelMember;
 import com.nhom4.component.JpanelOrder;
-import com.nhom4.component.JpanelProduct;
-import com.nhom4.component.JpanelStaff;
-
-import java.awt.Button;
+import com.nhom4.component.JpanelProductNew;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 
@@ -38,7 +35,7 @@ public class DashboardScreen extends javax.swing.JFrame {
     private Timer t;
     
     
-    private final JpanelProduct product = new JpanelProduct();
+    private final JpanelProductNew product = new JpanelProductNew();
     private final JpanelMember member = new JpanelMember();
     private final JpanelBill bill = new JpanelBill();
     
@@ -124,22 +121,24 @@ public class DashboardScreen extends javax.swing.JFrame {
     }
     
     private void setUpJanelMain(){
-        JpanelMain.add(product);
-       // JpanelMain.add(staff);
-        JpanelMain.add(member);
         
-        JpanelMain.add(bill);
         
-        JpanelMain.add(staff);
+            JpanelMain.add(product);
+            
+            JpanelMain.add(member);
+        
+            JpanelMain.add(bill);
+        
+            JpanelMain.add(staff);
       
-        JpanelMain.add(order);
-        JPanelHome.setVisible(true);
-        startTimer();
-        product.setVisible(false);
-        member.setVisible(false);
-        staff.setVisible(false);
-        bill.setVisible(false);
-        
+            JpanelMain.add(order);
+            JPanelHome.setVisible(true);
+            startTimer();
+            product.setVisible(false);
+            member.setVisible(false);
+            staff.setVisible(false);
+            bill.setVisible(false);
+       
       //  staff.setVisible(false);
     }
     private void startTimer(){
@@ -526,20 +525,24 @@ public class DashboardScreen extends javax.swing.JFrame {
 
     private void btnProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductActionPerformed
         // TODO add your handling code here:
-        product.setVisible(true);
         
-        
-        JPanelHome.setVisible(false);
-        member.setVisible(false);
-        bill.setVisible(false);
-        staff.setVisible(false);
-        onChangeTabClick(1);
+        if(MainScreen.staffRole.equals("Phục Vụ") ||MainScreen.staffRole.equals("Tài Chính")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập", "Thông báo!",
+            JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            product.setVisible(true);
+            JPanelHome.setVisible(false);
+            member.setVisible(false);
+            bill.setVisible(false);
+            staff.setVisible(false);
+            onChangeTabClick(1);
+        } 
     }//GEN-LAST:event_btnProductActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        
+       
         JPanelHome.setVisible(true);
-        
-        
         product.setVisible(false);
         member.setVisible(false);
         bill.setVisible(false);
@@ -548,55 +551,80 @@ public class DashboardScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemberActionPerformed
-        // TODO add your handling code here:
-        member.setVisible(true);
         
-        
-        JPanelHome.setVisible(false);
-        product.setVisible(false);
-        bill.setVisible(false);
-        staff.setVisible(false);
+        if(MainScreen.staffRole.equals("Toàn Quyền") ){
+            
+            member.setVisible(true);
+            JPanelHome.setVisible(false);
+            product.setVisible(false);
+            bill.setVisible(false);
+            staff.setVisible(false);
        
-        onChangeTabClick(3);
+            onChangeTabClick(3);
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập", "Thông báo!",
+            JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnMemberActionPerformed
 
     private void btnBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillActionPerformed
         // TODO add your handling code here:
+        if(MainScreen.staffRole.equals("Phục Vụ") ||MainScreen.staffRole.equals("Toàn Quyền") ||MainScreen.staffRole.equals("Tài Chính")){
+            
+            bill.setVisible(true);
+            member.setVisible(false);
+            JPanelHome.setVisible(false);
+            product.setVisible(false);
+            staff.setVisible(false);
+            onChangeTabClick(4);
+           
+        }else{
+             JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập", "Thông báo!",
+            JOptionPane.INFORMATION_MESSAGE);
+        }
         
-        bill.setVisible(true);
         
-        member.setVisible(false);
-        JPanelHome.setVisible(false);
-        product.setVisible(false);
-        staff.setVisible(false);
-       
-        onChangeTabClick(4);
     }//GEN-LAST:event_btnBillActionPerformed
 
     private void btnStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffActionPerformed
         // TODO add your handling code here:
-        staff.setVisible(true);
         
-        bill.setVisible(false);
-        member.setVisible(false);
-        JPanelHome.setVisible(false);
-        product.setVisible(false);
+        if(MainScreen.staffRole.equals("Toàn Quyền") ){
+            staff.setVisible(true);
+        
+            bill.setVisible(false);
+            member.setVisible(false);
+            JPanelHome.setVisible(false);
+            product.setVisible(false);
        
-        onChangeTabClick(2);
+            onChangeTabClick(2);
+        }else{
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập", "Thông báo!",
+            JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnStaffActionPerformed
 
     private void btnGoiMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoiMonActionPerformed
-        // TODO add your handling code here:
         
-        order.setVisible(true);
-        staff.setVisible(false);
+        if(MainScreen.staffRole.equals("Phục Vụ") ||MainScreen.staffRole.equals("Toàn Quyền")){
+            order.setVisible(true);
+            staff.setVisible(false);
         
-        bill.setVisible(false);
-        member.setVisible(false);
-        JPanelHome.setVisible(false);
-        product.setVisible(false);
+            bill.setVisible(false);
+            member.setVisible(false);
+            JPanelHome.setVisible(false);
+            product.setVisible(false);
         
-        onChangeTabClick(7);
+            onChangeTabClick(7);
+        }else{
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập", "Thông báo!",
+            JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_btnGoiMonActionPerformed
 
     /**

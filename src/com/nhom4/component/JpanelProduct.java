@@ -126,6 +126,11 @@ public class JpanelProduct extends javax.swing.JPanel {
         themBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         themBtn.setForeground(new java.awt.Color(51, 153, 0));
         themBtn.setText("Thêm SP");
+        themBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themBtnActionPerformed(evt);
+            }
+        });
 
         xoaBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         xoaBtn.setForeground(new java.awt.Color(255, 51, 51));
@@ -441,60 +446,55 @@ public class JpanelProduct extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_timKiemBtn1ActionPerformed
 
+    private void lstLoaiSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLoaiSanPhamMouseClicked
+        //System.out.print(txtMaLoai.getText());
+
+        Point point = evt.getPoint();
+        int colunm = lstLoaiSanPham.rowAtPoint(point);
+
+        txtMaLoai.setText(allProductCaregory.get(colunm).getMa());
+        txtTenLoai.setText(allProductCaregory.get(colunm).getTen());
+
+    }//GEN-LAST:event_lstLoaiSanPhamMouseClicked
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+
+        String ma = txtMaLoai.getText();
+        String ten = txtTenLoai.getText();
+
+        ProductCategory temp = new ProductCategory(ma,ten);
+        boolean res = productCategory.insertProductCategory(temp);
+        if(res==true){
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            getAllproductToTable();
+        }else{
+            JOptionPane.showMessageDialog(this, "Đã có lỗi khi thêm");
+        }
+
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        boolean res= productCategory.deleteProductCategoryById(txtMaLoai.getText());
+        if(res==true){
+            JOptionPane.showMessageDialog(this, "Xoá thành công");
+            getAllproductToTable();
+        }else{
+            JOptionPane.showMessageDialog(this, "Đã có lỗi khi xoá");
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        
+    }//GEN-LAST:event_btnSuaActionPerformed
+
     private void txtMaLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaLoaiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaLoaiActionPerformed
 
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+    private void themBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themBtnActionPerformed
         // TODO add your handling code here:
-        
-        String ma = txtMaLoai.getText();
-        String ten = txtTenLoai.getText();
-        
-        ProductCategory temp = new ProductCategory(ma,ten);
-       boolean res = productCategory.insertProductCategory(temp);
-       if(res==true){
-           JOptionPane.showMessageDialog(this, "Thêm thành công");
-            getAllproductToTable();
-       }else{
-           JOptionPane.showMessageDialog(this, "Đã có lỗi khi thêm");
-       }
-        
-    }//GEN-LAST:event_btnThemActionPerformed
-
-    private void lstLoaiSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLoaiSanPhamMouseClicked
-       //System.out.print(txtMaLoai.getText());
-       
-       Point point = evt.getPoint();
-       int colunm = lstLoaiSanPham.rowAtPoint(point);
-       
-       txtMaLoai.setText(allProductCaregory.get(colunm).getMa());
-       txtTenLoai.setText(allProductCaregory.get(colunm).getTen());
-       
-       
-       
-    }//GEN-LAST:event_lstLoaiSanPhamMouseClicked
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-       boolean res= productCategory.deleteProductCategoryById(txtMaLoai.getText());
-       if(res==true){
-           JOptionPane.showMessageDialog(this, "Xoá thành công");
-           getAllproductToTable();
-       }else{
-            JOptionPane.showMessageDialog(this, "Đã có lỗi khi xoá");
-       }
-        
-    }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-       boolean res = productCategory.updateProductCategoryById(txtMaLoai.getText(), txtTenLoai.getText());
-       if(res==true){
-           JOptionPane.showMessageDialog(this, "Sửa thành công");
-           getAllproductToTable();
-       }else{
-            JOptionPane.showMessageDialog(this, "Đã có lỗi khi sửa");
-       }
-    }//GEN-LAST:event_btnSuaActionPerformed
+    }//GEN-LAST:event_themBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

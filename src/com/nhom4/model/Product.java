@@ -42,7 +42,14 @@ public class Product {
     public void setHinhanh(String hinhanh) {
         this.hinhanh = hinhanh;
     }
+    public String getKichco() {
+        return kichco;
+    }
 
+    public void setKichco(String kichco) {
+        this.kichco = kichco;
+    }
+    
     public String getMaLoaiSanPham() {
         return maLoaiSanPham;
     }
@@ -53,6 +60,7 @@ public class Product {
     private String ma;
     private String ten;
     private double gia;
+    private String kichco;
     private String hinhanh;
     private String maLoaiSanPham;
     
@@ -60,10 +68,11 @@ public class Product {
         
     }
     
-    Product(String ma,String ten,double gia,String hinhanh,String maLoaiSanPham){
+    Product(String ma,String ten,double gia,String hinhanh,String maLoaiSanPham,String kichco){
         this.ma=ma;
         this.ten=ten;
         this.gia=gia;
+        this.kichco=kichco;
         this.hinhanh=hinhanh;
         this.maLoaiSanPham=maLoaiSanPham;
     }

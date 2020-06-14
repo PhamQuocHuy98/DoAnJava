@@ -9,7 +9,7 @@ import java.sql.*;
 /**
  *
  * @author phamquochuy
- */
+ */ 
 public class Connect {
     public Connection conn = null;
 
@@ -22,10 +22,10 @@ public class Connect {
                 
                 return DriverManager.getConnection(url,userName,password);
         }catch (ClassNotFoundException e) {
-           //e.printStackTrace();
+           e.printStackTrace();
           // System.out.print(e);
         }catch (SQLException e){
-            //System.out.print(e);
+            System.out.print(e);
         }
         return null;
     }
