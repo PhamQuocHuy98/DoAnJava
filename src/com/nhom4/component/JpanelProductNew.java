@@ -24,7 +24,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
     /**
      * Creates new form JpanelProductNew
      */
-    private ProductRepository cateRepo;
+    
     private ProductRepository productRepo;
     private List<ProductCategory> listCate;
     private List<Product> listProduct;
@@ -39,7 +39,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
        // listProduct =new List<Product>();
     }
     void initData1(){
-        cateRepo = new ProductRepository();
+        //cateRepo = new ProductRepository();
         loadListCategory();
     }
     void initData(){
@@ -91,6 +91,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
         themBtn.setForeground(new java.awt.Color(255, 255, 255));
         themBtn.setText("Thêm SP");
         themBtn.setBorderPainted(false);
+        themBtn.setOpaque(true);
         themBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 themBtnActionPerformed(evt);
@@ -123,6 +124,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
         btnFreshPro.setForeground(new java.awt.Color(255, 255, 255));
         btnFreshPro.setText("Làm Mới");
         btnFreshPro.setBorderPainted(false);
+        btnFreshPro.setOpaque(true);
         btnFreshPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFreshProActionPerformed(evt);
@@ -133,6 +135,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setText("Xóa");
         btnXoa.setBorderPainted(false);
+        btnXoa.setOpaque(true);
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -366,7 +369,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
     }
     
     private void loadListCategory(){
-       listCate = cateRepo.getAllProductCaregory();
+       listCate = productRepo.getAllProductCaregory();
         
         DefaultTableModel defaultTableModel  = new DefaultTableModel(
                 
@@ -406,7 +409,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
 
     private void btnThemLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemLoaiActionPerformed
         FormCategoryProduct formCategory = new FormCategoryProduct();
-        formCategory.setCateRepo(cateRepo);
+        formCategory.setCateRepo(productRepo);
         formCategory.setLocationRelativeTo(null);
         formCategory.setVisible(true);
         // TODO add your handling code here:
@@ -425,7 +428,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
                 System.out.print(selectedRowIndex);
                 
                 FormCategoryProduct formCategory= new FormCategoryProduct();
-                formCategory.setCateRepo(cateRepo);
+                formCategory.setCateRepo(productRepo);
                 formCategory.setCateModel(listCate.get(selectedRowIndex));
                 formCategory.initValue();
                 formCategory.setLocationRelativeTo(null);
@@ -495,7 +498,7 @@ public class JpanelProductNew extends javax.swing.JPanel {
          }else{
              int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn muốn xoá Loại này "+listCate.get(selectedRowIndex).getMa(),"Thông báo",JOptionPane.YES_NO_OPTION);
               if(dialogResult == JOptionPane.YES_OPTION){
-                 if (cateRepo.deleteProductCategoryById(listCate.get(selectedRowIndex).getMa()) == true){
+                 if (productRepo.deleteProductCategoryById(listCate.get(selectedRowIndex).getMa()) == true){
                      initData1();
                  }
               }else{

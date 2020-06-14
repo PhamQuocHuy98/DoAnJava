@@ -12,7 +12,12 @@ import com.nhom4.model.Utils;
 
 import com.nhom4.repository.ProductRepository;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Vector;
 import javax.imageio.ImageIO;
@@ -75,12 +80,15 @@ public class FormProduct extends javax.swing.JFrame {
             
             cbLoaiSanPham.setSelectedIndex(0);
             
+            
+            
         }else{
             txtMasp.setText(productModel.getMa());
             txtTensp.setText(productModel.getTen());
             txtGia.setText(String.valueOf(productModel.getGia()));
            // txtLoai.setText(productModel.getMaLoaiSanPham());
            
+            //System.out.print(productModel.getHinhanh());
             lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource(productModel.getHinhanh())));
             cbKichco.setSelectedItem(productModel.getKichco());
             cbLoaiSanPham.setSelectedItem(productModel.getMaLoaiSanPham());
@@ -317,24 +325,19 @@ public class FormProduct extends javax.swing.JFrame {
             File f = chooser.getSelectedFile();
         
           //  lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hinhcf.jpg"))); 
-            
-            //String location = getClass().getResource("").toString();
-            
-           /// System.out.println(location);
            
-           System.out.println(f.getAbsolutePath());
-           
-            File folder = new File("/images/");
+         // System.out.println(f.getAbsolutePath());
+         
+         String url = System.getProperty("user.dir");
+         System.out.println(url);
+          File folder = new File(url+"/src/images/"+f.getName());
         
+          //System.out.println(folder.getAbsolutePath());
             f.renameTo(folder);
+                
             filename = "/images/"+f.getName();
         
-        
-        
-            System.out.print(filename);
-            
-            
-            ImageIcon ii=new ImageIcon(Utils.scaleImage(120, 120, ImageIO.read(new File(f.getAbsolutePath()))));//get the image from file chooser and scale it to match JLabel size
+            ImageIcon ii=new ImageIcon(Utils.scaleImage(120, 120, ImageIO.read(new File(folder.getAbsolutePath()))));//get the image from file chooser and scale it to match JLabel size
             
             //ImageIO.write(im, filename, folder)
             
