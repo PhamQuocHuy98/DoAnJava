@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -46,7 +46,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jButton1" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
+              <Component id="btnSave" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
               <Component id="jPanel2" alignment="1" min="-2" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -54,7 +54,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="btnSave" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -83,8 +83,8 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="maLoaiSpTxt" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="loaiSpTxt" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtMaLoai" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtTenLoai" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
@@ -95,12 +95,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="maLoaiSpTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMaLoai" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="loaiSpTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTenLoai" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -109,12 +109,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="maLoaiSpTxt">
+            <Component class="javax.swing.JTextField" name="txtMaLoai">
               <Properties>
                 <Property name="text" type="java.lang.String" value="CF"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="loaiSpTxt">
+            <Component class="javax.swing.JTextField" name="txtTenLoai">
               <Properties>
                 <Property name="text" type="java.lang.String" value="C&#xe0; Ph&#xea;"/>
               </Properties>
@@ -131,7 +131,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnSave">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="99" red="0" type="rgb"/>
@@ -141,6 +141,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="L&#x1b0;u d&#x1eef; li&#x1ec7;u"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

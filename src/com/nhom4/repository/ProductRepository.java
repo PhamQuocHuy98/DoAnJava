@@ -139,6 +139,51 @@ public class ProductRepository {
            return false;
         }
     }
+    
+    public boolean updateCategory(ProductCategory category){
+        
+        Connection connection  = Connect.connectSQL();
+        String query = "UPDATE LoaiSanPham SET TenLoaiSanPham=?, WHERE MaLoaiSanPham=?" ;
+        
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(2, category.getMa());
+            
+            preparedStatement.setString(1, category.getTen());
+            
+         
+            
+            System.out.println(preparedStatement.toString());
+            int rs = preparedStatement.executeUpdate();
+             return rs != 0;
+            
+           
+        }catch(SQLException e){
+           e.getStackTrace();
+           return false;
+        }
+    }
+    public boolean updateProductCategoryById(ProductCategory category){
+        
+        Connection connection  = Connect.connectSQL();
+        String query = "UPDATE LoaiSanPham SET TenLoaiSanPham=? WHERE MaLoaiSanPham=?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, category.getTen());
+            preparedStatement.setString(2, category.getMa());
+           
+            int rs = preparedStatement.executeUpdate();
+            
+            return true;
+            
+        }catch(SQLException e){
+           e.getStackTrace();
+           return false;
+        }
+       
+    }
     public boolean deleteProduct(String productID){
         Connection connection  = Connect.connectSQL();
         String query = "DELETE FROM SanPham WHERE MaSanPham =?";
@@ -210,26 +255,7 @@ public class ProductRepository {
         
     }
     
-    public boolean updateProductCategoryById(String ma,String ten){
-        
-        Connection connection  = Connect.connectSQL();
-        String query = "UPDATE LoaiSanPham SET TenLoaiSanPham=? WHERE MaLoaiSanPham=?";
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            
-            preparedStatement.setString(1, ten);
-            preparedStatement.setString(2, ma);
-           
-            int rs = preparedStatement.executeUpdate();
-            
-            return true;
-            
-        }catch(SQLException e){
-           e.getStackTrace();
-           return false;
-        }
-       
-    }
+    
     
     /**
      *
