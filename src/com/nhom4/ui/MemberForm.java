@@ -5,17 +5,50 @@
  */
 package com.nhom4.ui;
 
+import com.nhom4.model.Member;
+import com.nhom4.model.Staff;
+import com.nhom4.repository.MemberRepository;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Windows 10
  */
-public class MemberJFrame extends javax.swing.JFrame {
+public class MemberForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form MemberJFrame
+     * Creates new form MemberForm
      */
-    public MemberJFrame() {
+    
+    MemberRepository memberRepo;
+    Member memberModel;
+    public MemberForm() {
         initComponents();
+    }
+    
+    public void setMemberRepo(MemberRepository repo){
+        memberRepo = repo;
+    }
+    
+    public void setMemberModel(Member mem){
+        memberModel = mem;
+    }
+    public void initValue(){
+        if(memberModel==null){
+            txtmathanhvien.setText("");
+            txtsdt.setText("");
+            txthovaten.setText("");
+            cbloaithanhvien.setSelectedIndex(0);
+            
+           
+           
+        }else{
+            txtmathanhvien.setText(memberModel.getMakhachhang());
+            txthovaten.setText(String.valueOf(memberModel.getTenkhachhang()));
+            txtsdt.setText(memberModel.getSodienthoai());
+           
+            cbloaithanhvien.setSelectedItem(memberModel.getLoaikhachhang());
+        }
     }
 
     /**
@@ -32,14 +65,14 @@ public class MemberJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCmnd = new javax.swing.JTextField();
-        txtHovaten = new javax.swing.JTextField();
-        txtSdt = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtmathanhvien = new javax.swing.JTextField();
+        txthovaten = new javax.swing.JTextField();
+        txtsdt = new javax.swing.JTextField();
+        cbloaithanhvien = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        btnThem = new javax.swing.JButton();
+        btnLuu = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 51));
@@ -54,13 +87,13 @@ public class MemberJFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Số điện thoại:");
 
-        txtCmnd.setText("S01");
+        txtmathanhvien.setText("S01");
 
-        txtHovaten.setText("Đỗ Tiến Sĩ");
+        txthovaten.setText("Đỗ Tiến Sĩ");
 
-        txtSdt.setText("01221122290");
+        txtsdt.setText("01221122290");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vip1", "Vip2", "Vip3", "Vip4" }));
+        cbloaithanhvien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vip1", "Vip2", "Vip3", "Vip4" }));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Loại thành Viên:");
@@ -81,10 +114,10 @@ public class MemberJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCmnd)
-                            .addComponent(txtHovaten)
-                            .addComponent(txtSdt, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtmathanhvien)
+                            .addComponent(txthovaten)
+                            .addComponent(txtsdt, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(cbloaithanhvien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,24 +128,29 @@ public class MemberJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtCmnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtmathanhvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtHovaten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txthovaten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbloaithanhvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/Save.png"))); // NOI18N
-        btnThem.setText("Lưu dữ liệu");
+        btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/Save.png"))); // NOI18N
+        btnLuu.setText("Lưu dữ liệu");
+        btnLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,9 +159,9 @@ public class MemberJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,25 +171,65 @@ public class MemberJFrame extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
+        // TODO add your handling code here:
+         Member member = new Member();
+        
+        
+        member.setMakhachhang(txtmathanhvien.getText());
+        member.setTenkhachhang(txthovaten.getText());
+        
+        member.setSodienthoai(txtsdt.getText());
+       
+        member.setLoaikhachhang((cbloaithanhvien.getSelectedItem().toString()));
+       
+      
+        
+       if(memberModel==null){
+            boolean res =memberRepo.insertMember(member);
+            if(res==true){
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "Thêm thất bại");
+            }
+        }else{
+            
+            boolean res = memberRepo.updateMember(member);
+            if(res==true){
+                JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại");
+            }
+        }
+        
+        this.dispose();
+        
+        
+        
+        
+    }//GEN-LAST:event_btnLuuActionPerformed
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnThem;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnLuu;
+    private javax.swing.JComboBox<String> cbloaithanhvien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCmnd;
-    private javax.swing.JTextField txtHovaten;
-    private javax.swing.JTextField txtSdt;
+    private javax.swing.JTextField txthovaten;
+    private javax.swing.JTextField txtmathanhvien;
+    private javax.swing.JTextField txtsdt;
     // End of variables declaration//GEN-END:variables
 }
