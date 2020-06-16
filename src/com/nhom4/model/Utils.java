@@ -8,6 +8,7 @@ package com.nhom4.model;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -24,8 +25,8 @@ public class Utils {
     g2d.dispose();
     return bi;
     }
-    private static void save(String fileName, String ext) {
-
-  
+    public static String formatMoney(double money) {
+          DecimalFormat formatter = new DecimalFormat("###,###,###");
+          return formatter.format(money);
   }
 }

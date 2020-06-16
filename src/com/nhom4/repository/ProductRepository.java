@@ -252,7 +252,63 @@ public class ProductRepository {
            return false;
         }
         
-        
+    }
+    
+    
+    public List<String> getSizeProductByName(String name){
+        List<String> sizes = new ArrayList<>();
+        String query = "SELECT KichThuoc FROM SanPham Where TenSanPham = ?";
+        Connection connection  = Connect.connectSQL();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, name);
+           
+            ResultSet rs = preparedStatement.executeQuery();
+            
+           // System.out.print(preparedStatement.toString());
+            
+            while(rs.next()){
+               
+                sizes.add(rs.getString("kichthuoc"));
+            }
+            return sizes;
+            
+        }catch(SQLException e){
+            e.getStackTrace();
+        }
+        return sizes;
+    }
+    
+    public Product getProductByNameAndSize(String ten,String kichthuoc){
+        Product product  = new Product();
+        String query = "SELECT * FROM SanPham Where TenSanPham = ? AND KichThuoc=?";
+        Connection connection  = Connect.connectSQL();
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, ten);
+            preparedStatement.setString(2, kichthuoc);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            
+            while(rs.next()){
+                
+                product.setMa(rs.getString("masanpham"));
+                product.setTen(rs.getString("tensanpham"));
+                product.setGia(rs.getDouble("gia"));
+                product.setKichco(rs.getString("kichthuoc"));
+                product.setHinhanh(rs.getString("hinhanh"));
+                product.setMaLoaiSanPham(rs.getString("maloaisanpham"));
+                
+                return product;
+                
+            }
+            
+        }catch(SQLException e){
+            e.getStackTrace();
+        }
+        return product;
     }
     
     

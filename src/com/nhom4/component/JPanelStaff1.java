@@ -6,6 +6,7 @@
 package com.nhom4.component;
 
 import com.nhom4.model.Staff;
+import com.nhom4.model.Utils;
 import com.nhom4.repository.StaffRepository;
 import com.nhom4.ui.AddStaffForm;
 import java.text.DecimalFormat;
@@ -64,10 +65,10 @@ public final class JPanelStaff1 extends javax.swing.JPanel {
         defaultTableModel.addColumn("Số Điện Thoại");
         defaultTableModel.addColumn("Lương");
         
-        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        //DecimalFormat formatter = new DecimalFormat("###,###,###");
         listStaff.forEach((staff) -> {
             defaultTableModel.addRow(new Object[]{
-                staff.getMaNV(),staff.getTenNV(),mapSexIntToString(staff.getGioiTinh()),staff.getChucVu(),1900,staff.getSdt(),staff.getDiaChi(),formatter.format(staff.getLuong())
+                staff.getMaNV(),staff.getTenNV(),mapSexIntToString(staff.getGioiTinh()),staff.getChucVu(),1900,staff.getSdt(),staff.getDiaChi(),Utils.formatMoney(staff.getLuong())
             });
         });
     }

@@ -136,6 +136,7 @@ public class FormProduct extends javax.swing.JFrame {
 
         jLabel18.setText("Mã Sản Phẩm:");
 
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hinhcf.jpg"))); // NOI18N
 
         jLabel22.setText("Giá:");
@@ -184,11 +185,11 @@ public class FormProduct extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblHinh)
-                        .addGap(77, 77, 77))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnUploadImage)
-                        .addGap(127, 127, 127))))
+                        .addGap(127, 127, 127))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblHinh)
+                        .addGap(44, 44, 44))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,8 +220,9 @@ public class FormProduct extends javax.swing.JFrame {
                         .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(lblHinh)
+                .addGap(18, 18, 18)
                 .addComponent(btnUploadImage)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
